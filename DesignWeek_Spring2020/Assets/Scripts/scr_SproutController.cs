@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class scr_SproutController : MonoBehaviour
 {
-    [SerializeField] GameObject sproutObstaclePrefab;
-    bool active;
+    [SerializeField] GameObject sproutSpawnablePrefab;
+    public bool isActive;
     public void Activate()//called when sprout is watered
     {
-        if (!active)
+        if (!isActive)
         { StartCoroutine(wateredActions()); }
     }
     IEnumerator wateredActions()
     {
-        active = true;
-        print(gameObject.name + " was wattered");
+        isActive = true;
+        //print(gameObject.name + " was wattered");
         yield return new WaitForSeconds(.2f);//wait a bit
-        Instantiate(sproutObstaclePrefab, transform.position, transform.rotation);//instatiate wall
+        GameObject newSpawnable = Instantiate(sproutSpawnablePrefab, transform.position, transform.rotation);//instatiate wall
+        newSpawnable.GetComponent<scr_DeathSproutReset_Controller>().originSprout = gameObject;
         //Destroy(gameObject);//die
     }
 

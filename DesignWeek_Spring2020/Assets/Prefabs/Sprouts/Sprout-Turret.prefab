@@ -73,6 +73,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1305820115780379905, guid: 812ccb32ae5b3df4aab6a9b0138c93ba,
         type: 3}
+    - target: {fileID: 1814692722529092041, guid: a97e8d57c368d564b97e64468b624840,
+        type: 3}
+      propertyPath: sproutSpawnablePrefab
+      value: 
+      objectReference: {fileID: 1305820115780379905, guid: 812ccb32ae5b3df4aab6a9b0138c93ba,
+        type: 3}
     - target: {fileID: 1552341244757473359, guid: a97e8d57c368d564b97e64468b624840,
         type: 3}
       propertyPath: m_Color.r

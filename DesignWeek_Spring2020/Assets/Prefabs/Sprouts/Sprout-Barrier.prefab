@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2b6ce7daaf91c40bf17544bac12ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sproutObstaclePrefab: {fileID: 1305820115780379905, guid: 0915c261893b0ec44b3b0f38a4222b77,
+  sproutSpawnablePrefab: {fileID: 1305820115780379905, guid: 0915c261893b0ec44b3b0f38a4222b77,
     type: 3}
+  isActive: 0
 --- !u!212 &1552341244757473359
 SpriteRenderer:
   m_ObjectHideFlags: 0

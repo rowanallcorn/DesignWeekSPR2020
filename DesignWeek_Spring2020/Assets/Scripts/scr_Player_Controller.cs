@@ -42,7 +42,7 @@ public class scr_Player_Controller : MonoBehaviour
 
         FacingDirection();//run facing dirrection code
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), wateringKey)))
-        { print("watering"); Water(); }
+        { Water(); }
     }
     private void Movement()
     {

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1305820115780379916}
   - component: {fileID: 1305820115780379919}
   - component: {fileID: 1305820115780379918}
-  - component: {fileID: -1013699084768230286}
-  - component: {fileID: 8939848121220881635}
-  m_Layer: 0
-  m_Name: Turret
+  - component: {fileID: 3128446313981486019}
+  - component: {fileID: 7809710481712489121}
+  m_Layer: 11
+  m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 23ad0c230e2b76a44a0fb5f2a1c51973, type: 3}
-  m_Color: {r: 1, g: 0.21078536, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.6629182, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-1013699084768230286
+--- !u!114 &3128446313981486019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,14 +118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305820115780379905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300427767276de443abfc72ef87ffdf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f706bc68e701d649892fff04014c864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 569644012220973990, guid: 54821d541f5057a4cb91593f9a380df5,
-    type: 3}
-  cooldown: 1.5
-  maxShots: 4
---- !u!114 &8939848121220881635
+  health: 3
+--- !u!114 &7809710481712489121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
