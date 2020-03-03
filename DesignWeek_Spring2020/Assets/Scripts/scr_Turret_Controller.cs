@@ -8,11 +8,13 @@ public class scr_Turret_Controller : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float cooldown;
     [SerializeField] private int maxShots;
+    [SerializeField] private GameObject shootingPos;
 
     private void Start()
     {
         s_DeathSproutReset_Controller = GetComponent<scr_DeathSproutReset_Controller>();
         StartCoroutine(Cooldown());
+        transform.localScale = transform.position.x > .1f ?new Vector2(-1,1):new Vector2(1,1);
     }
     IEnumerator Cooldown()
     {
@@ -27,6 +29,7 @@ public class scr_Turret_Controller : MonoBehaviour
 
     }
     private void Shoot()
-    {  GameObject newProjectile = Instantiate(projectilePrefab, transform.position + transform.up * .6f, transform.rotation); }
+    {  GameObject newProjectile = Instantiate(projectilePrefab, shootingPos.transform.position, shootingPos.transform.rotation);  }
+
    
 }
