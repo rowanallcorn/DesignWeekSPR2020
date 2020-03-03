@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3168390111583704200}
+  - component: {fileID: 2349061467397098545}
   - component: {fileID: 3168390111583704203}
   - component: {fileID: 5854535157766818667}
-  - component: {fileID: 2349061467397098545}
   - component: {fileID: 466072246525344758}
   m_Layer: 0
   m_Name: Player
@@ -35,6 +35,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2349061467397098545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168390111583704196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ec9a62d8cf967459ad6e188325b6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMovementSpeed: 5
+  accTime: 0.2
+  decTime: 0.1
+  upKey: UpArrow
+  downKey: DownArrow
+  leftKey: LeftArrow
+  rightKey: RightArrow
+  wateringKey: 
+  joystickDeadZone: 0.4
+  gameSpaceMinBoundaries: {x: 0, y: 0}
+  gameSpaceMaxBoundaries: {x: 0, y: 0}
+  sproutCheckOffsets:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
 --- !u!114 &3168390111583704203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,32 +96,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2349061467397098545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168390111583704196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ec9a62d8cf967459ad6e188325b6e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMovementSpeed: 5
-  accTime: 0.2
-  decTime: 0.1
-  upKey: UpArrow
-  downKey: DownArrow
-  leftKey: LeftArrow
-  rightKey: RightArrow
-  wateringKey: 
-  joystickDeadZone: 0.4
-  sproutCheckOffsets:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
-  - {x: 0, y: 1}
-  - {x: 0, y: -1}
 --- !u!61 &466072246525344758
 BoxCollider2D:
   m_ObjectHideFlags: 0
