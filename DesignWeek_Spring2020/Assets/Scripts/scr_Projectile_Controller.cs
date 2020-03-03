@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class scr_Projectile_Controller : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    [SerializeField] private float speed;
+    void Start()
+    { rb = GetComponent<Rigidbody2D>(); }
+    void FixedUpdate()
+    { rb.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Force); }
+    private void Update()
+    { CheckForWall(); }
+    void CheckForWall()
+    {
+        RaycastHit2D obstacleCheck = Physics2D.Raycast(transform.position , transform.up, .2f, LayerMask.GetMask("SproutObstacle"));
+        bool hit = obstacleCheck.collider != null ? true : false;
+        if (hit)
+        {
+            if (obstacleCheck.collider.gameObject.layer == LayerMask.NameToLayer("SproutObstacle"))
+            {
+                obstacleCheck.collider.GetComponent<scr_SproutObstacle_Controller>().takeDamage();
+            }
+            Destroy(gameObject);
+        }
+    }
+}
