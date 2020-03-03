@@ -15,5 +15,4 @@ public class scr_PlayerInput_Component : MonoBehaviour
         float verInput = verNeg + verPos;//vertical input
         return new Vector2(horInput,verInput);//final input
     }
-
 }

@@ -86,8 +86,13 @@ MonoBehaviour:
   downKey: DownArrow
   leftKey: LeftArrow
   rightKey: RightArrow
+  wateringKey: 
   joystickDeadZone: 0.4
-  facingDir: 0
+  sproutCheckOffsets:
+  - {x: 0.8, y: 0}
+  - {x: -0.8, y: 0}
+  - {x: 0, y: 0.8}
+  - {x: 0, y: -0.8}
 --- !u!1 &6787499816359063247
 GameObject:
   m_ObjectHideFlags: 0

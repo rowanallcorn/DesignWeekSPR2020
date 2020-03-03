@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class scr_Player_Controller : MonoBehaviour
 {
@@ -8,12 +10,14 @@ public class scr_Player_Controller : MonoBehaviour
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
-    [SerializeField] private string upKey, downKey, leftKey, rightKey;
+    [SerializeField] private string upKey, downKey, leftKey, rightKey, wateringKey;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
     private float facingDir;
+    [SerializeField] private List<Vector2> sproutCheckOffsets;
+    private Vector2 currentSproutCheckOffset;
 
 
     void Start()
@@ -32,13 +36,15 @@ public class scr_Player_Controller : MonoBehaviour
             (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
         Movement();//run movement code
         FacingDirection();//run facing dirrection code
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), wateringKey)))
+        { print("watering"); Water(); }
     }
 
     private void Movement()
     {
         //Horizontal Movement
         if (Mathf.Abs(movementInput.x) > joystickDeadZone)//acceleration
-        {  movementSpeed.x = Mathf.Clamp(movementSpeed.x + (maxMovementSpeed * movementInput.x / accTime * Time.deltaTime), -maxMovementSpeed, maxMovementSpeed); }
+        { movementSpeed.x = Mathf.Clamp(movementSpeed.x + (maxMovementSpeed * movementInput.x / accTime * Time.deltaTime), -maxMovementSpeed, maxMovementSpeed); }
         else//deceleration 
         {
             if (Mathf.Abs(rb.velocity.x) > 0.5)
@@ -65,14 +71,30 @@ public class scr_Player_Controller : MonoBehaviour
     }
 
     private void FacingDirection()
-    {//Get a number from 1 to 4 to determine the facing direction ((1)right,(2)left,(3)up,(4)down)
+    {//Get a number from 0 to 3 to determine the facing direction ((1)right,(2)left,(3)up,(4)down)
         if (movementInput.magnitude > joystickDeadZone)
         {
             if (Mathf.Abs(movementInput.x) > Mathf.Abs(movementInput.y))
-            { facingDir = Mathf.Sign(movementInput.x) > 0 ? 1 : 2; }
-            else { facingDir = Mathf.Sign(movementInput.y) > 0 ? 3 : 4; }
+            { facingDir = Mathf.Sign(movementInput.x) > 0 ? 0 : 1; }
+            else { facingDir = Mathf.Sign(movementInput.y) > 0 ? 2 : 3; }
+            currentSproutCheckOffset = sproutCheckOffsets[(int)facingDir];
         }
         //TODO 
         //Implement sprite change
+    }
+    private void Water()
+    {
+        //check if there is a sprout
+        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset, new Vector2(.9f, .9f), 0, LayerMask.GetMask("Sprout"));
+        if (sprouts.Length > 0)
+        {
+            print(sprouts[0].gameObject.name + " was watered");
+            //ToDo
+            //Access sprout 
+            //Trigger in sprout
+            //Instantiate Obstacle
+            //Destroy Sprout
+            //other
+        }
     }
 }
