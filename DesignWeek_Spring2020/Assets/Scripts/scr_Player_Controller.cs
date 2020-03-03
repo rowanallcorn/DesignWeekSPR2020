@@ -7,6 +7,7 @@ public class scr_Player_Controller : MonoBehaviour
     //components
     private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
+    private Animator anim;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
@@ -20,6 +21,7 @@ public class scr_Player_Controller : MonoBehaviour
     private float facingDir;
     [SerializeField] private List<Vector2> sproutCheckOffsets;
     private Vector2 currentSproutCheckOffset;
+    private int setAnim;
 
 
     void Start()
@@ -28,6 +30,7 @@ public class scr_Player_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
         turretPrefab = scr_Reference_Manager.turretPrefab;
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -88,8 +91,30 @@ public class scr_Player_Controller : MonoBehaviour
             else { facingDir = Mathf.Sign(movementInput.y) > 0 ? 2 : 3; }
             currentSproutCheckOffset = sproutCheckOffsets[(int)facingDir];
         }
-        //TODO 
-        //Implement sprite change
+        //Trigger animations
+        if (rb.velocity.magnitude < .2f)
+        {
+            switch (facingDir)
+            {
+                case 0:
+                    if (setAnim != facingDir) { anim.SetTrigger("IdleRight"); }
+                    setAnim = (int)facingDir;
+                    break;
+                case 1:
+                    if (setAnim != facingDir) { anim.SetTrigger("IdleLeft"); }
+                    setAnim = (int)facingDir;
+                    break;
+                case 2:
+                    if (setAnim != facingDir) { anim.SetTrigger("IdleUp"); }
+                    setAnim = (int)facingDir;
+                    break;
+                case 3:
+                    if (setAnim != facingDir) { anim.SetTrigger("IdleDown"); }
+                    setAnim = (int)facingDir;
+                    break;
+            }
+        }
+
     }
     private void Spawn(GameObject spawnable)
     {
