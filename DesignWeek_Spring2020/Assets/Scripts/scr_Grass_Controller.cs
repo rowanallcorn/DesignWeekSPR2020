@@ -12,6 +12,7 @@ public class scr_Grass_Controller : MonoBehaviour
     }
     IEnumerator wateredActions(GameObject spawnableObj)
     {
+        
         isActive = true;
         //print(gameObject.name + " was wattered");
         yield return new WaitForSeconds(.2f);//wait a bit

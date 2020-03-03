@@ -26,6 +26,8 @@ public class scr_Player_Controller : MonoBehaviour
     {
         s_PlayerInput_Component = GetComponent<scr_PlayerInput_Component>();
         rb = GetComponent<Rigidbody2D>();
+        barrierPrefab = scr_Reference_Manager.barrierPrefab;
+        turretPrefab = scr_Reference_Manager.turretPrefab;
     }
     void Update()
     {
@@ -92,11 +94,11 @@ public class scr_Player_Controller : MonoBehaviour
     private void Spawn(GameObject spawnable)
     {
         //check if there is a sprout
-        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.6f, .6f), 0, LayerMask.GetMask("Sprout"));
-        if (sprouts.Length > 0)
+        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.6f, .6f), 0, LayerMask.GetMask("Grass"));
+        if (grassTiles.Length > 0)
         {
-            if (sprouts[0].GetComponent<scr_Grass_Controller>() != null)
-            { sprouts[0].GetComponent<scr_Grass_Controller>().Activate(spawnable); }
+            if (grassTiles[0].GetComponent<scr_Grass_Controller>() != null)
+            { grassTiles[0].GetComponent<scr_Grass_Controller>().Activate(spawnable); }
         }
     }
 }
