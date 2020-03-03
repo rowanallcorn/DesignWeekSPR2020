@@ -25,7 +25,6 @@ public class scr_Player_Controller : MonoBehaviour
         s_PlayerInput_Component = GetComponent<scr_PlayerInput_Component>();
         rb = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         //GetMovement Input
@@ -39,7 +38,6 @@ public class scr_Player_Controller : MonoBehaviour
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), wateringKey)))
         { print("watering"); Water(); }
     }
-
     private void Movement()
     {
         //Horizontal Movement
@@ -69,7 +67,6 @@ public class scr_Player_Controller : MonoBehaviour
         rb.velocity = new Vector2(movementSpeed.x, movementSpeed.y);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxMovementSpeed);//clamp velocity
     }
-
     private void FacingDirection()
     {//Get a number from 0 to 3 to determine the facing direction ((1)right,(2)left,(3)up,(4)down)
         if (movementInput.magnitude > joystickDeadZone)
@@ -85,16 +82,11 @@ public class scr_Player_Controller : MonoBehaviour
     private void Water()
     {
         //check if there is a sprout
-        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset, new Vector2(.9f, .9f), 0, LayerMask.GetMask("Sprout"));
+        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .8f, new Vector2(.9f, .9f), 0, LayerMask.GetMask("Sprout"));
         if (sprouts.Length > 0)
         {
-            print(sprouts[0].gameObject.name + " was watered");
-            //ToDo
-            //Access sprout 
-            //Trigger in sprout
-            //Instantiate Obstacle
-            //Destroy Sprout
-            //other
+            if (sprouts[0].GetComponent<scr_SproutController>() != null)
+            { sprouts[0].GetComponent<scr_SproutController>().Activate(); }
         }
     }
 }
