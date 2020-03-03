@@ -10,9 +10,10 @@ public class scr_Player_Controller : MonoBehaviour
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
-    [SerializeField] private string upKey, downKey, leftKey, rightKey, wateringKey;
+    [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey, spawnBarrierKey;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
+    private GameObject barrierPrefab, turretPrefab;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -41,8 +42,11 @@ public class scr_Player_Controller : MonoBehaviour
         rb.position = new Vector2(ClampedX, ClampedY);
 
         FacingDirection();//run facing dirrection code
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), wateringKey)))
-        { Water(); }
+        //Spawning turrets and barriers
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
+        { Spawn(turretPrefab); }
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
+        { Spawn(barrierPrefab); }
     }
     private void Movement()
     {
@@ -85,14 +89,14 @@ public class scr_Player_Controller : MonoBehaviour
         //TODO 
         //Implement sprite change
     }
-    private void Water()
+    private void Spawn(GameObject spawnable)
     {
         //check if there is a sprout
         Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.6f, .6f), 0, LayerMask.GetMask("Sprout"));
         if (sprouts.Length > 0)
         {
-            if (sprouts[0].GetComponent<scr_SproutController>() != null)
-            { sprouts[0].GetComponent<scr_SproutController>().Activate(); }
+            if (sprouts[0].GetComponent<scr_Grass_Controller>() != null)
+            { sprouts[0].GetComponent<scr_Grass_Controller>().Activate(spawnable); }
         }
     }
 }
