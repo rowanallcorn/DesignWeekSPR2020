@@ -12,6 +12,7 @@ public class scr_Player_Controller : MonoBehaviour
     //Setup
     [SerializeField] private string upKey, downKey, leftKey, rightKey, wateringKey;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
+    [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -34,6 +35,11 @@ public class scr_Player_Controller : MonoBehaviour
             (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
             (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
         Movement();//run movement code
+        //Constrain pllayer to gamespace
+        float ClampedX = Mathf.Clamp(rb.position.x, gameSpaceMinBoundaries.x, gameSpaceMaxBoundaries.x);
+        float ClampedY = Mathf.Clamp(rb.position.y, gameSpaceMinBoundaries.y, gameSpaceMaxBoundaries.y);
+        rb.position = new Vector2(ClampedX, ClampedY);
+
         FacingDirection();//run facing dirrection code
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), wateringKey)))
         { print("watering"); Water(); }

@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 3168390111583704196, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player (down)
       objectReference: {fileID: 0}
     - target: {fileID: 3168390111583704196, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 3168390111583704200, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3168390111583704200, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -236,6 +236,21 @@ PrefabInstance:
         type: 3}
       propertyPath: wateringKey
       value: Alpha6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMinBoundaries.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMaxBoundaries.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMinBoundaries.y
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}
@@ -401,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 3168390111583704196, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player (up)
       objectReference: {fileID: 0}
     - target: {fileID: 3168390111583704200, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -411,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 3168390111583704200, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3168390111583704200, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -482,6 +497,26 @@ PrefabInstance:
         type: 3}
       propertyPath: wateringKey
       value: Alpha5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMinBoundaries.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMaxBoundaries.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMinBoundaries.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: gameSpaceMaxBoundaries.y
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}
