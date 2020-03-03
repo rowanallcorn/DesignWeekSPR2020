@@ -88,7 +88,7 @@ public class scr_Player_Controller : MonoBehaviour
     private void Water()
     {
         //check if there is a sprout
-        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .8f, new Vector2(.9f, .9f), 0, LayerMask.GetMask("Sprout"));
+        Collider2D[] sprouts = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.6f, .6f), 0, LayerMask.GetMask("Sprout"));
         if (sprouts.Length > 0)
         {
             if (sprouts[0].GetComponent<scr_SproutController>() != null)
