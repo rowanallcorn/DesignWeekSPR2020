@@ -149,10 +149,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 27
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e00c57a4d22deb747b06445ef228bb19
+      spriteID: ad4cc6c37bc045d4f9b642cb5b33a8ba
       internalID: -1261942846904340971
       vertices: []
       indices: 
@@ -170,10 +170,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 27
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +181,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ce333d0ff460524fbdfb304957f9606
+      spriteID: 52a1d5a7121e9924e9f0b985afb5dff1
       internalID: 3531118976344577415
       vertices: []
       indices: 
@@ -191,10 +191,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 0
-        width: 27
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df12184f5b9901a45bcf5bff7587f409
+      spriteID: c59d37328bd09ed41b6748838fd12b4f
       internalID: 4283329235757803393
       vertices: []
       indices: 
@@ -212,10 +212,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_3
       rect:
         serializedVersion: 2
-        x: 98
+        x: 96
         y: 0
-        width: 27
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f485142de8566ac4c81153dec32512f4
+      spriteID: 331f3724146fa304fb7c868ecc9bcc70
       internalID: 8288841978835834487
       vertices: []
       indices: 
@@ -233,10 +233,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_4
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 0
-        width: 27
-        height: 30
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 384dd76a61e28f84b8bcde9fec5439a2
+      spriteID: 1625dd084b4f32e43a522d074276fd16
       internalID: 4202528228852678779
       vertices: []
       indices: 
@@ -254,10 +254,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_5
       rect:
         serializedVersion: 2
-        x: 162
+        x: 160
         y: 0
-        width: 27
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,7 +265,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7c8461d3ceb6b4c8d6696d714b587a
+      spriteID: 640a65d8b0e4c6b43ac3eca06360b0f0
       internalID: 3857353433087859285
       vertices: []
       indices: 
@@ -275,10 +275,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_6
       rect:
         serializedVersion: 2
-        x: 194
+        x: 192
         y: 0
-        width: 27
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,7 +286,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cac32b1c7b5298e45a0d9bb356be8eda
+      spriteID: 027ca0f6746abab459a4c6dc32ae5f31
       internalID: -797322122699359637
       vertices: []
       indices: 
@@ -296,10 +296,10 @@ TextureImporter:
       name: spr_player_walk_faceLeft_7
       rect:
         serializedVersion: 2
-        x: 226
+        x: 224
         y: 0
-        width: 27
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,7 +307,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e102b72290bdb248b24e736b4b92df6
+      spriteID: f290c69425b281d48b975fc66fe35c2a
       internalID: -577430453579319497
       vertices: []
       indices: 

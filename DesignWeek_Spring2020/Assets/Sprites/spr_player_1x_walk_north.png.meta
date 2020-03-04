@@ -137,18 +137,18 @@ TextureImporter:
       name: spr_player_1x_walk_north_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 22
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5824526d9c147de45a22e5850ea7c817
+      spriteID: 8768b442d19c8c64e9124ae2016c63bb
       internalID: 5338104670172753555
       vertices: []
       indices: 
@@ -158,18 +158,18 @@ TextureImporter:
       name: spr_player_1x_walk_north_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 32
         y: 0
-        width: 22
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92f000f2adb12ca4aabd754fbde4e77d
+      spriteID: e6cbd8476e261d342903597d19ee6584
       internalID: -4058902938209007663
       vertices: []
       indices: 
@@ -179,18 +179,18 @@ TextureImporter:
       name: spr_player_1x_walk_north_2
       rect:
         serializedVersion: 2
-        x: 69
+        x: 64
         y: 0
-        width: 22
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 783c3ce4d99694844838eab760d2620d
+      spriteID: 951b5ee42d9fd58488cf724cbd994f89
       internalID: 6274718096344275147
       vertices: []
       indices: 
@@ -200,18 +200,18 @@ TextureImporter:
       name: spr_player_1x_walk_north_3
       rect:
         serializedVersion: 2
-        x: 101
+        x: 96
         y: 0
-        width: 22
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4485a3d638a9c2a499179350b2a1a7f9
+      spriteID: ecfa61fac7de27a498a98affb3455972
       internalID: 6080641073502272460
       vertices: []
       indices: 
