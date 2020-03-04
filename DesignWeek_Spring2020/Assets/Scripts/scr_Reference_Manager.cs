@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class scr_Reference_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef,turretHolderRef,barrierHolderRef;
+    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef,turretHolderRef,barrierHolderRef, audioSourcesHolderRef;
     public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder,barrierHolder;
+    public static AudioSource[] audioSources;
+  
     void Awake()
     {
         barrierPrefab = barrierPrefabRef;
@@ -13,5 +15,6 @@ public class scr_Reference_Manager : MonoBehaviour
         projectileHolder = projectileHolderRef;
         turretHolder = turretHolderRef;
         barrierHolder = barrierHolderRef;
+        audioSources = audioSourcesHolderRef.GetComponentsInChildren<AudioSource>();
     }
 }

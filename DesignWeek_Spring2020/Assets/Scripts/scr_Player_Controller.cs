@@ -66,28 +66,13 @@ public class scr_Player_Controller : MonoBehaviour
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
         //audio
-        if (rb.velocity.magnitude > .2f)
-        { PlayAudioClip(audioClips[0], true,3); }
-        else { if (currentAudioClip == audioClips[0]) { audio.Stop(); } }
+        //if (rb.velocity.magnitude > .2f)
+        //{ PlayAudioClip(audioClips[0], true,3); }
+        //else { if (currentAudioClip == audioClips[0]) { audio.Stop(); } }
 
 
     }
-    void PlayAudioClip(AudioClip newAudioClip, bool looping,int importance)
-    {
-        if (importance >= currentAudioClipInportance)
-        {
-            if (currentAudioClip != newAudioClip)
-            {
-                currentAudioClip = newAudioClip;
-                audio.PlayOneShot(newAudioClip);
-            }
-            else
-            {
-                if (looping && !audio.isPlaying)
-                { audio.PlayOneShot(newAudioClip); }
-            }
-        }
-    }
+
     private void Movement()
     {
         //Horizontal Movement
