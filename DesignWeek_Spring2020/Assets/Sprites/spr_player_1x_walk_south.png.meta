@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 2f5e3bf4699cf3741b053f5fe3fea54f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7620487247023516547
+    second: spr_player_1x_walk_south_0
+  - first:
+      213: -8358683911495523028
+    second: spr_player_1x_walk_south_1
+  - first:
+      213: -6061462760884821400
+    second: spr_player_1x_walk_south_2
+  - first:
+      213: -6302823472757398291
+    second: spr_player_1x_walk_south_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -120,7 +132,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_player_1x_walk_south_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bea8d3d10ff10b43a78c0b2879b08b4
+      internalID: 7620487247023516547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_1x_walk_south_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d706cb08898cb41a0d2fec047d66e0
+      internalID: -8358683911495523028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_1x_walk_south_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa9fbf568503514193c5fef29646394
+      internalID: -6061462760884821400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_player_1x_walk_south_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c94417a7c520d84099e8f9a441ff4b9
+      internalID: -6302823472757398291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
