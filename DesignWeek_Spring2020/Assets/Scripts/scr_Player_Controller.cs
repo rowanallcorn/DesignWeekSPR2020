@@ -15,6 +15,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     private GameObject barrierPrefab, turretPrefab;
+    [SerializeField] private GameObject grassTargetIcon;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -22,6 +23,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] private List<Vector2> sproutCheckOffsets;
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
+    private GameObject targetGrass;
 
 
     void Start()
@@ -48,10 +50,14 @@ public class scr_Player_Controller : MonoBehaviour
 
         FacingDirection();//run facing dirrection code
         //Spawning turrets and barriers
+        targetGrass = GetTargetGrass();
+        if (targetGrass != null) { grassTargetIcon.transform.position = targetGrass.transform.position; }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
         { Spawn(turretPrefab); }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
+
+
     }
     private void Movement()
     {
@@ -112,9 +118,8 @@ public class scr_Player_Controller : MonoBehaviour
             }
         }
     }
-    private void Spawn(GameObject spawnable)
+    private GameObject GetTargetGrass()
     {
-        //check if there is a sprout
         Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.5f, .5f), 0, LayerMask.GetMask("Grass"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestGrassColl = null;
@@ -130,12 +135,18 @@ public class scr_Player_Controller : MonoBehaviour
                 }
             }
             else { closestGrassColl = grassTiles[0]; }
-
-            if (closestGrassColl.GetComponent<scr_Grass_Controller>() != null)
-            { closestGrassColl.GetComponent<scr_Grass_Controller>().Activate(spawnable); }
+            return closestGrassColl.gameObject;
         }
+        else { return null; }
 
-        
-
+    }
+    private void Spawn(GameObject spawnable)
+    {
+        //check if there is a sprout
+        if (targetGrass != null)
+        {
+            if (targetGrass.GetComponent<scr_Grass_Controller>() != null)
+            { targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable); }
+        }
     }
 }
