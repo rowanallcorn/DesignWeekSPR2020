@@ -7475,22 +7475,22 @@ PrefabInstance:
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: upKey
-      value: R
+      value: UpArrow
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: downKey
-      value: F
+      value: DownArrow
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: leftKey
-      value: D
+      value: LeftArrow
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: rightKey
-      value: G
+      value: RightArrow
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -7520,12 +7520,12 @@ PrefabInstance:
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: spawnTurretKey
-      value: Alpha1
+      value: C
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: spawnBarrierKey
-      value: Alpha2
+      value: Alpha5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}
@@ -8677,12 +8677,32 @@ PrefabInstance:
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: spawnTurretKey
-      value: Alpha9
+      value: RightBracket
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: spawnBarrierKey
-      value: Alpha0
+      value: Alpha6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: upKey
+      value: R
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: downKey
+      value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: leftKey
+      value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: rightKey
+      value: G
       objectReference: {fileID: 0}
     - target: {fileID: 466072246525344758, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
