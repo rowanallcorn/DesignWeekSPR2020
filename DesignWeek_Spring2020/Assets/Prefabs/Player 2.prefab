@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5819698567802815447}
   - component: {fileID: 5716212680403635076}
   m_Layer: 14
-  m_Name: Player
+  m_Name: Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,15 +54,15 @@ MonoBehaviour:
   maxMovementSpeed: 2
   accTime: 0.1
   decTime: 0.1
-  upKey: UpArrow
-  downKey: DownArrow
-  leftKey: LeftArrow
-  rightKey: RightArrow
-  spawnTurretKey: C
-  spawnBarrierKey: Alpha5
+  upKey: R
+  downKey: F
+  leftKey: D
+  rightKey: G
+  spawnTurretKey: RightBracket
+  spawnBarrierKey: Alpha6
   joystickDeadZone: 0.4
-  gameSpaceMinBoundaries: {x: -4.95, y: -3.4}
-  gameSpaceMaxBoundaries: {x: -1.05, y: 3.9}
+  gameSpaceMinBoundaries: {x: 1.2, y: -3.4}
+  gameSpaceMaxBoundaries: {x: 4.8, y: 3.9}
   grassTargetIcon: {fileID: 5496407589450110918}
   audioClips:
   - {fileID: 8300000, guid: 0def35ccefca8224cbad3e0a698d6132, type: 3}
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 3168390111583704196}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c1dde01c4f5e7f94faa77afbc8281eb2, type: 2}
+  m_Controller: {fileID: 9100000, guid: e724d4439c4099a47b5b46d7409d8914, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -358,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6787499816359063247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3168390111583704200}
@@ -402,7 +402,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 60
-  m_Sprite: {fileID: 5338104670172753555, guid: 5e0a4bf7be95f794a910a24bd5aa60e1,
+  m_Sprite: {fileID: 2539612366970780094, guid: 808decece5a9d6146ad14d23f14bfe04,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
