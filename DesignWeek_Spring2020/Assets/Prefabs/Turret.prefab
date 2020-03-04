@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.13177782, y: -0.30045342}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5747968, y: 0.39909315}
   m_EdgeRadius: 0
 --- !u!114 &-1013699084768230286
 MonoBehaviour:
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 569644012220973990, guid: 54821d541f5057a4cb91593f9a380df5,
     type: 3}
-  cooldown: 1.5
-  maxShots: 4
+  cooldown: 0.5
+  maxShots: 3
   shootingPos: {fileID: 4739121248621325078}
 --- !u!114 &8939848121220881635
 MonoBehaviour:

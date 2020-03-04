@@ -102,24 +102,40 @@ public class scr_Player_Controller : MonoBehaviour
                     setAnim = (int)facingDir; break;
                 case 1:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkLeft"); }
-                    setAnim = (int)facingDir;  break;
+                    setAnim = (int)facingDir; break;
                 case 2:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkUp"); }
                     setAnim = (int)facingDir; break;
                 case 3:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkDown"); }
-                    setAnim = (int)facingDir;  break;
+                    setAnim = (int)facingDir; break;
             }
         }
     }
     private void Spawn(GameObject spawnable)
     {
         //check if there is a sprout
-        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.6f, .6f), 0, LayerMask.GetMask("Grass"));
+        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.5f, .5f), 0, LayerMask.GetMask("Grass"));
+        float smallestDist = Mathf.Infinity;
+        Collider2D closestGrassColl = null;
         if (grassTiles.Length > 0)
         {
-            if (grassTiles[0].GetComponent<scr_Grass_Controller>() != null)
-            { grassTiles[0].GetComponent<scr_Grass_Controller>().Activate(spawnable); }
+            if (grassTiles.Length > 1)
+            {
+                foreach (Collider2D coll in grassTiles)
+                {
+                    float myDist = Vector2.Distance(transform.position, coll.transform.position);
+                    if (myDist < smallestDist)
+                    { smallestDist = myDist; closestGrassColl = coll; }
+                }
+            }
+            else { closestGrassColl = grassTiles[0]; }
+
+            if (closestGrassColl.GetComponent<scr_Grass_Controller>() != null)
+            { closestGrassColl.GetComponent<scr_Grass_Controller>().Activate(spawnable); }
         }
+
+        
+
     }
 }
