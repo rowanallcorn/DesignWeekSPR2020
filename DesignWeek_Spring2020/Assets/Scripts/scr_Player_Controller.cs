@@ -99,20 +99,16 @@ public class scr_Player_Controller : MonoBehaviour
             {
                 case 0:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkRight"); }
-                    setAnim = (int)facingDir;
-                    break;
+                    setAnim = (int)facingDir; break;
                 case 1:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkLeft"); }
-                    setAnim = (int)facingDir;
-                    break;
+                    setAnim = (int)facingDir;  break;
                 case 2:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkUp"); }
-                    setAnim = (int)facingDir;
-                    break;
+                    setAnim = (int)facingDir; break;
                 case 3:
                     if (setAnim != facingDir) { anim.SetTrigger("WalkDown"); }
-                    setAnim = (int)facingDir;
-                    break;
+                    setAnim = (int)facingDir;  break;
             }
         }
     }
