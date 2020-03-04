@@ -26,8 +26,6 @@ public class scr_Player_Controller : MonoBehaviour
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
     private GameObject targetGrass;
-    private AudioClip currentAudioClip;
-    private int currentAudioClipInportance;
 
 
     void Start()
@@ -66,9 +64,8 @@ public class scr_Player_Controller : MonoBehaviour
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
         //audio
-        //if (rb.velocity.magnitude > .2f)
-        //{ PlayAudioClip(audioClips[0], true,3); }
-        //else { if (currentAudioClip == audioClips[0]) { audio.Stop(); } }
+        if (rb.velocity.magnitude > .2f)
+        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0); }
 
 
     }
