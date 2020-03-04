@@ -6,7 +6,9 @@ public class scr_SproutObstacle_Controller : MonoBehaviour
 {
     [SerializeField] private float health;
     scr_DeathSproutReset_Controller s_DeathSproutReset_Controller;
+ 
     private Animator anim;
+    
 
     private void Start()
     {

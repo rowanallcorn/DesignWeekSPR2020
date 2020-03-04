@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originSprout: {fileID: 0}
+  deathParticleEffect: {fileID: 3038568074815613942, guid: 9bc8cbc0f912a1a4986faaa58cd90ab7,
+    type: 3}
 --- !u!58 &5382317859809975136
 CircleCollider2D:
   m_ObjectHideFlags: 0
