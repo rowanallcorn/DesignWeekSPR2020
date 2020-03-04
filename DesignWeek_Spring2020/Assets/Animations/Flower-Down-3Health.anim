@@ -31,6 +31,9 @@ AnimationClip:
     - time: 0.05
       value: {fileID: 5305475134807057897, guid: 327ba85e51c9a684cad143857b6ca9c3,
         type: 3}
+    - time: 0.06666667
+      value: {fileID: 4549790276048052218, guid: 327ba85e51c9a684cad143857b6ca9c3,
+        type: 3}
     attribute: m_Sprite
     path: FlowerSpritesHolder
     classID: 212
@@ -54,12 +57,13 @@ AnimationClip:
     - {fileID: 6116266148968641626, guid: 327ba85e51c9a684cad143857b6ca9c3, type: 3}
     - {fileID: -4248550759271079079, guid: 327ba85e51c9a684cad143857b6ca9c3, type: 3}
     - {fileID: 5305475134807057897, guid: 327ba85e51c9a684cad143857b6ca9c3, type: 3}
+    - {fileID: 4549790276048052218, guid: 327ba85e51c9a684cad143857b6ca9c3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.06666667
+    m_StopTime: 0.083333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
