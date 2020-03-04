@@ -8,6 +8,7 @@ public class scr_Player_Controller : MonoBehaviour
     private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
     private Animator anim;
+    public AudioSource audio;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
@@ -16,6 +17,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     private GameObject barrierPrefab, turretPrefab;
     [SerializeField] private GameObject grassTargetIcon;
+    [SerializeField] private List<AudioClip> audioClips;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -24,6 +26,8 @@ public class scr_Player_Controller : MonoBehaviour
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
     private GameObject targetGrass;
+    private AudioClip currentAudioClip;
+    private int currentAudioClipInportance;
 
 
     void Start()
@@ -33,6 +37,7 @@ public class scr_Player_Controller : MonoBehaviour
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
         turretPrefab = scr_Reference_Manager.turretPrefab;
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -60,8 +65,28 @@ public class scr_Player_Controller : MonoBehaviour
         { Spawn(turretPrefab); }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
+        //audio
+        if (rb.velocity.magnitude > .2f)
+        { PlayAudioClip(audioClips[0], true,3); }
+        else { if (currentAudioClip == audioClips[0]) { audio.Stop(); } }
 
 
+    }
+    void PlayAudioClip(AudioClip newAudioClip, bool looping,int importance)
+    {
+        if (importance >= currentAudioClipInportance)
+        {
+            if (currentAudioClip != newAudioClip)
+            {
+                currentAudioClip = newAudioClip;
+                audio.PlayOneShot(newAudioClip);
+            }
+            else
+            {
+                if (looping && !audio.isPlaying)
+                { audio.PlayOneShot(newAudioClip); }
+            }
+        }
     }
     private void Movement()
     {
