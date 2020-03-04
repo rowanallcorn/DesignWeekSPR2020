@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 6620796733592747747, guid: 8f5b933956c521847a5af51967abc3d3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,7 +132,7 @@ MonoBehaviour:
   maxY: 3.9
   speed: 1
   movingDown: 0
-  health: 0
+  health: 4
 --- !u!95 &1402119819224825092
 Animator:
   serializedVersion: 3
