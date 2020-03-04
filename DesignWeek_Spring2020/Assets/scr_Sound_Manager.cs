@@ -16,6 +16,11 @@ public class scr_Sound_Manager : MonoBehaviour
             thisScript.StartCoroutine(thisScript.ResetAudioSource(newAudioSource, clipDuration)); //call audio source reset
         }
     }
+    public static void StopAudioClip(AudioClip newAudioClip)
+    {
+        scr_Sound_Manager thisScript = scr_Reference_Manager.s_Sound_Manager;//get reference to self
+        thisScript.StopAudioFile(newAudioClip);
+    }
     IEnumerator ResetAudioSource(AudioSource audioSource, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -41,5 +46,20 @@ public class scr_Sound_Manager : MonoBehaviour
         if (audioClipAlreadyPlaying)
         { return null; }
         else { return selectedAudioSource; }
+    }
+    public void StopAudioFile(AudioClip audioCLip)
+    {
+        foreach (AudioSource tempAudioSource in scr_Reference_Manager.audioSources)
+        {
+            if (tempAudioSource.isPlaying)
+            {
+                if (tempAudioSource.clip == audioCLip)
+                {
+                    tempAudioSource.Stop();
+                    tempAudioSource.clip = null;
+                }
+            }
+        }
+
     }
 }

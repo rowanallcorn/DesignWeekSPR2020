@@ -66,6 +66,7 @@ public class scr_Player_Controller : MonoBehaviour
         //audio
         if (rb.velocity.magnitude > .2f)
         { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0); }
+        else { scr_Sound_Manager.StopAudioClip(audioClips[0]); }
 
 
     }
