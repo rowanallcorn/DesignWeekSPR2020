@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class scr_Reference_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef;
-    public static GameObject barrierPrefab, turretPrefab;
+    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef,turretHolderRef,barrierHolderRef;
+    public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder,barrierHolder;
     void Awake()
     {
         barrierPrefab = barrierPrefabRef;
         turretPrefab = turretPrefabRef;
+        projectileHolder = projectileHolderRef;
+        turretHolder = turretHolderRef;
+        barrierHolder = barrierHolderRef;
     }
 }

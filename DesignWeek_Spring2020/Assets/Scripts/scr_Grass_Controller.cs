@@ -5,7 +5,7 @@ using UnityEngine;
 public class scr_Grass_Controller : MonoBehaviour
 {
     public bool isActive;
-    public bool isGrassy=true;
+    public bool isGrassy = true;
     private bool isDead;
     private Animator anim;
 
@@ -15,7 +15,7 @@ public class scr_Grass_Controller : MonoBehaviour
     }
     public void Activate(GameObject spawnableObj)//called when sprout is watered
     {
-        if (!isActive&&isGrassy)
+        if (!isActive && isGrassy)
         { StartCoroutine(wateredActions(spawnableObj)); }
     }
     IEnumerator wateredActions(GameObject spawnableObj)
@@ -25,13 +25,15 @@ public class scr_Grass_Controller : MonoBehaviour
         isDead = true;
         //print(gameObject.name + " was wattered");
         yield return new WaitForSeconds(.2f);//wait a bit
-        GameObject newSpawnable = Instantiate(spawnableObj, transform.position, transform.rotation);//instatiate wall
+
+        Transform parent = spawnableObj.GetComponent<scr_Turret_Controller>() != null ?scr_Reference_Manager.turretHolder.transform: scr_Reference_Manager.barrierHolder.transform;
+        GameObject newSpawnable = Instantiate(spawnableObj, transform.position, transform.rotation, parent);//instatiate wall
         newSpawnable.GetComponent<scr_DeathSproutReset_Controller>().originSprout = gameObject;
         //Destroy(gameObject);//die
     }
     private void Update()
     {
-        if (!isGrassy && !isActive&& isDead)
+        if (!isGrassy && !isActive && isDead)
         {
             isDead = false;
             anim.SetTrigger("GrowBack");

@@ -19,18 +19,14 @@ public class scr_Projectile_Controller : MonoBehaviour
 
     void CheckForWall()
     {
-        RaycastHit2D obstacleCheck = Physics2D.Raycast(transform.position, transform.up, .2f, LayerMask.GetMask("SproutObstacle") + LayerMask.GetMask("Flower"));
+        RaycastHit2D obstacleCheck = Physics2D.Raycast(transform.position, transform.up, .2f, LayerMask.GetMask("SproutObstacle") + LayerMask.GetMask("Flower") + LayerMask.GetMask("BulletDestroyer") );
         bool hit = obstacleCheck.collider != null ? true : false;
         if (hit)
         {
             if (obstacleCheck.collider.gameObject.layer == LayerMask.NameToLayer("SproutObstacle"))
-            {
-                obstacleCheck.collider.GetComponent<scr_SproutObstacle_Controller>().takeDamage();
-            }
+            {  obstacleCheck.collider.GetComponent<scr_SproutObstacle_Controller>().takeDamage(); }
             if (obstacleCheck.collider.gameObject.layer == LayerMask.NameToLayer("Flower"))
-            {
-                obstacleCheck.collider.GetComponent<scr_Flower_Controller>().TakeDamage();
-            }
+            {  obstacleCheck.collider.GetComponent<scr_Flower_Controller>().TakeDamage(); }
             Destroy(gameObject);
         }
     }

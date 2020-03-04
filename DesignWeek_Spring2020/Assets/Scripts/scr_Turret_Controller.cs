@@ -29,7 +29,7 @@ public class scr_Turret_Controller : MonoBehaviour
 
     }
     private void Shoot()
-    {  GameObject newProjectile = Instantiate(projectilePrefab, shootingPos.transform.position, shootingPos.transform.rotation);  }
+    {  GameObject newProjectile = Instantiate(projectilePrefab, shootingPos.transform.position, shootingPos.transform.rotation,scr_Reference_Manager.projectileHolder.transform);  }
 
    
 }
