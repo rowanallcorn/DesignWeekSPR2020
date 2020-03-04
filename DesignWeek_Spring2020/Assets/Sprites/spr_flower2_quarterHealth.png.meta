@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 1511034abe069d346992aaa94dacaf31
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6336977773981440379
+    second: spr_flower2_quarterHealth_0
+  - first:
+      213: 6069141014973207669
+    second: spr_flower2_quarterHealth_1
+  - first:
+      213: -1662151902979715271
+    second: spr_flower2_quarterHealth_2
+  - first:
+      213: 6116708223126284185
+    second: spr_flower2_quarterHealth_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +96,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_flower2_quarterHealth_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc0fcd10fa20db43a0f613065a05af4
+      internalID: 6336977773981440379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_quarterHealth_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0b57a968ef1c341ad71bc13fc00df0
+      internalID: 6069141014973207669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_quarterHealth_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9303833117f154e93abd73c87e1eb0
+      internalID: -1662151902979715271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_quarterHealth_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da04906656a58a5469af9e15109f3e89
+      internalID: 6116708223126284185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

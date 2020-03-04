@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 5f2a593beb15957479e8e03a176145c5
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3174417997272966537
+    second: spr_flower2_halfHealth_0
+  - first:
+      213: -3034864344329641918
+    second: spr_flower2_halfHealth_1
+  - first:
+      213: 8522149211327317048
+    second: spr_flower2_halfHealth_2
+  - first:
+      213: -7773286005200687629
+    second: spr_flower2_halfHealth_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +96,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_flower2_halfHealth_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6046eadaac0f41f4c953152de1ef554c
+      internalID: 3174417997272966537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_halfHealth_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98e193f90fc61a4bb3f4ea5cd6f5ad8
+      internalID: -3034864344329641918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_halfHealth_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9a6536f7e4f55343b1ed2211506af46
+      internalID: 8522149211327317048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_flower2_halfHealth_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe83823dbb43754ab36f7d48a3bc3d1
+      internalID: -7773286005200687629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
