@@ -92,29 +92,29 @@ public class scr_Player_Controller : MonoBehaviour
             currentSproutCheckOffset = sproutCheckOffsets[(int)facingDir];
         }
         //Trigger animations
-        if (rb.velocity.magnitude < .2f)
+        anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);
+        if (setAnim != facingDir)
         {
             switch (facingDir)
             {
                 case 0:
-                    if (setAnim != facingDir) { anim.SetTrigger("IdleRight"); }
+                    if (setAnim != facingDir) { anim.SetTrigger("WalkRight"); }
                     setAnim = (int)facingDir;
                     break;
                 case 1:
-                    if (setAnim != facingDir) { anim.SetTrigger("IdleLeft"); }
+                    if (setAnim != facingDir) { anim.SetTrigger("WalkLeft"); }
                     setAnim = (int)facingDir;
                     break;
                 case 2:
-                    if (setAnim != facingDir) { anim.SetTrigger("IdleUp"); }
+                    if (setAnim != facingDir) { anim.SetTrigger("WalkUp"); }
                     setAnim = (int)facingDir;
                     break;
                 case 3:
-                    if (setAnim != facingDir) { anim.SetTrigger("IdleDown"); }
+                    if (setAnim != facingDir) { anim.SetTrigger("WalkDown"); }
                     setAnim = (int)facingDir;
                     break;
             }
         }
-
     }
     private void Spawn(GameObject spawnable)
     {
