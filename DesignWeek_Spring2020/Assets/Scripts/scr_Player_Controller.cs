@@ -8,7 +8,6 @@ public class scr_Player_Controller : MonoBehaviour
     private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
     private Animator anim;
-    public AudioSource audio;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
@@ -26,6 +25,7 @@ public class scr_Player_Controller : MonoBehaviour
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
     private GameObject targetGrass;
+    private bool watering;
 
 
     void Start()
@@ -35,7 +35,6 @@ public class scr_Player_Controller : MonoBehaviour
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
         turretPrefab = scr_Reference_Manager.turretPrefab;
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -64,12 +63,23 @@ public class scr_Player_Controller : MonoBehaviour
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
         //audio
-        if (rb.velocity.magnitude > .2f)
-        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0); }
+        ManageAudio();
+
+
 
 
     }
-
+    private void ManageAudio()
+    {
+        if (rb.velocity.magnitude > .2f)
+        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0); }
+        if (watering)
+        {
+            watering = false;
+            scr_Sound_Manager.PlayAudioClip(audioClips[1], 0);
+            scr_Sound_Manager.PlayAudioClip(audioClips[2], 0);
+        }
+    }
     private void Movement()
     {
         //Horizontal Movement
@@ -159,7 +169,10 @@ public class scr_Player_Controller : MonoBehaviour
         if (targetGrass != null)
         {
             if (targetGrass.GetComponent<scr_Grass_Controller>() != null)
-            { targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable); }
+            {
+                watering = true;
+                targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable); 
+            }
         }
     }
 }
