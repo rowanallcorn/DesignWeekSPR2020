@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5854535157766818667}
   - component: {fileID: 466072246525344758}
   - component: {fileID: 5819698567802815447}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9137810968974088350}
   - component: {fileID: 4141331681327873675}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TargetGrassIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782077097554764614}
   - component: {fileID: 884798269233455182}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PlayerSpritesHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
