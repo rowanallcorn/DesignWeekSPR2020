@@ -8,7 +8,12 @@ public class scr_Flower_Controller : MonoBehaviour
     [SerializeField] private float minY, maxY, speed;
     [SerializeField] private bool movingDown;
     [SerializeField] private float health;
-  
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
         if (movingDown)
@@ -31,6 +36,7 @@ public class scr_Flower_Controller : MonoBehaviour
     public void TakeDamage()
     {
         health -= 1;
+        anim.SetTrigger("Hit");
     }
     void Die()
     {
