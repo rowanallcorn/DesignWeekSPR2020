@@ -13,8 +13,13 @@ public class scr_Turret_Controller : MonoBehaviour
     private void Start()
     {
         s_DeathSproutReset_Controller = GetComponent<scr_DeathSproutReset_Controller>();
-        StartCoroutine(Cooldown());
+        StartCoroutine(StartShooting());
         transform.localScale = transform.position.x > .1f ?new Vector2(-1,1):new Vector2(1,1);
+    }
+    IEnumerator StartShooting()
+    {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Cooldown());
     }
     IEnumerator Cooldown()
     {
