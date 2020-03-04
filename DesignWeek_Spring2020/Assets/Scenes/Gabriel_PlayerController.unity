@@ -7510,12 +7510,12 @@ PrefabInstance:
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: gameSpaceMinBoundaries.y
-      value: -3.6
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: gameSpaceMaxBoundaries.y
-      value: 3.4
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
@@ -8662,12 +8662,12 @@ PrefabInstance:
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: gameSpaceMinBoundaries.y
-      value: -3.6
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: gameSpaceMaxBoundaries.y
-      value: 3.4
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
