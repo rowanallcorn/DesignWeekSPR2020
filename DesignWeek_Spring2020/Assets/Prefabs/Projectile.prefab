@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 7395087508637312899}
   - component: {fileID: 541534380415253013}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: BuletSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4969,8 +4969,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8930025111332364541, guid: d34c88f3be8f36d4f9c0c6a387dcb18d,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4978,7 +4977,7 @@ SpriteRenderer:
   m_Size: {x: 0.28125, y: 0.21875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &541534380415253013

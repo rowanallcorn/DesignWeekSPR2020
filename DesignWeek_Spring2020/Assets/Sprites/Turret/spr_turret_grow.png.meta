@@ -1,22 +1,40 @@
 fileFormatVersion: 2
-guid: d34c88f3be8f36d4f9c0c6a387dcb18d
+guid: 5ee9e0e68ace12241a9762d774b7c16e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8930025111332364541
-    second: spr_turret_bullet_0
+      213: 3490698438813740091
+    second: spr_turret_grow_0
   - first:
-      213: 1672412362809472196
-    second: spr_turret_bullet_1
+      213: -204009333490338381
+    second: spr_turret_grow_1
   - first:
-      213: -5631908677672160237
-    second: spr_turret_bullet_2
+      213: 6331037781908515826
+    second: spr_turret_grow_2
   - first:
-      213: 702286205964182920
-    second: spr_turret_bullet_3
+      213: 1559253612885842302
+    second: spr_turret_grow_3
   - first:
-      213: -8765066589351472605
-    second: spr_turret_bullet_4
+      213: -8306437673590603894
+    second: spr_turret_grow_4
+  - first:
+      213: 4409672784413785007
+    second: spr_turret_grow_5
+  - first:
+      213: -4808042394451659388
+    second: spr_turret_grow_6
+  - first:
+      213: -2794314778307968543
+    second: spr_turret_grow_7
+  - first:
+      213: 7304378091278628541
+    second: spr_turret_grow_8
+  - first:
+      213: -8906238784195477457
+    second: spr_turret_grow_9
+  - first:
+      213: -458128149469950894
+    second: spr_turret_grow_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -137,13 +155,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_turret_bullet_0
+      name: spr_turret_grow_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 13
-        width: 9
-        height: 7
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6369b102d4e353b4e9e6bac9e8a139eb
-      internalID: 8930025111332364541
+      spriteID: 4b9644551c5d22d42a72eb4e87f1abbe
+      internalID: 3490698438813740091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_turret_bullet_1
+      name: spr_turret_grow_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 13
-        width: 10
-        height: 7
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7a330bf0a0f5124d9df83e9319e3ed0
-      internalID: 1672412362809472196
+      spriteID: d9f37c639834e2947b6453b277c0900f
+      internalID: -204009333490338381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_turret_bullet_2
+      name: spr_turret_grow_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 13
-        width: 11
-        height: 7
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9febb1e4006f3e439eea79095a69bc0
-      internalID: -5631908677672160237
+      spriteID: 2744ee5e7481e9c4f8fca1ba52489a71
+      internalID: 6331037781908515826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_turret_bullet_3
+      name: spr_turret_grow_3
       rect:
         serializedVersion: 2
-        x: 106
-        y: 13
-        width: 10
-        height: 7
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc0ecbc660c986041b95acbd93202aa4
-      internalID: 702286205964182920
+      spriteID: 438459b2425eee5459eb750812e34d5f
+      internalID: 1559253612885842302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_turret_bullet_4
+      name: spr_turret_grow_4
       rect:
         serializedVersion: 2
-        x: 136
-        y: 13
-        width: 12
-        height: 7
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +253,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bffa93115e905f54f96067ca2d6f9769
-      internalID: -8765066589351472605
+      spriteID: ca1f5ecfa36ce5f45be38b2c8bae3678
+      internalID: -8306437673590603894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d214ae9bc3d7bd3478f45452bea5f92d
+      internalID: 4409672784413785007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ddd7a5d1de0c5a42b04c5b1087bb352
+      internalID: -4808042394451659388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17d0b318ed1d0b4b968b1cee76cff97
+      internalID: -2794314778307968543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c90c8033e8c3dd4a9e0d8eaf6955478
+      internalID: 7304378091278628541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce7da4b6b41ca042851246a3f027906
+      internalID: -8906238784195477457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_turret_grow_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ca98087d74a954c9202594c48f67dc
+      internalID: -458128149469950894
       vertices: []
       indices: 
       edges: []
