@@ -124,7 +124,7 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private GameObject GetTargetGrass()
     {
-        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * 1f, new Vector2(.5f, .5f), 0, LayerMask.GetMask("Grass"));
+        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .3f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestGrassColl = null;
         if (grassTiles.Length > 0)
