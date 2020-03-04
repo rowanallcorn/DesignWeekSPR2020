@@ -51,7 +51,10 @@ public class scr_Player_Controller : MonoBehaviour
         FacingDirection();//run facing dirrection code
         //Spawning turrets and barriers
         targetGrass = GetTargetGrass();
-        if (targetGrass != null) { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.white; }
+        if (targetGrass != null)
+        {
+            grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.white;
+        }
         else { grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
         { Spawn(turretPrefab); }
@@ -136,7 +139,7 @@ public class scr_Player_Controller : MonoBehaviour
                 }
             }
             else { closestGrassColl = grassTiles[0]; }
-            if (!closestGrassColl.GetComponent<scr_Grass_Controller>().isActive)
+            if (!closestGrassColl.GetComponent<scr_Grass_Controller>().isActive && closestGrassColl.GetComponent<scr_Grass_Controller>().isGrassy)
             { return closestGrassColl.gameObject; }
             else { return null; }
         }
