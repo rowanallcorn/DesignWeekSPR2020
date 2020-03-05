@@ -37,6 +37,7 @@ public class scr_Flower_Controller : MonoBehaviour
     {
         health -= 1;
         anim.SetTrigger("Hit");
+        speed *= 1.5f;
     }
     void Die()
     {

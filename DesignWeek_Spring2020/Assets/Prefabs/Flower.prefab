@@ -130,7 +130,7 @@ MonoBehaviour:
   playerId: 1
   minY: -3.5
   maxY: 3.9
-  speed: 1
+  speed: 0.6
   movingDown: 1
   health: 4
 --- !u!61 &9205495303442581538
