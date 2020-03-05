@@ -48,6 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isGrassy: 1
+  placementEffect: {fileID: 3038568074815613942, guid: c67ba819b36a25d4a9889b5bd65605e3,
+    type: 3}
+  reGrassEffect: {fileID: 1511651459062040474, guid: 0043984c3752f26459b4bb0e6fa1e5d9,
+    type: 3}
 --- !u!61 &8813662351301016886
 BoxCollider2D:
   m_ObjectHideFlags: 0

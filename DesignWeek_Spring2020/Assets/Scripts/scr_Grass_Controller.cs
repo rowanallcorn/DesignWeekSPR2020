@@ -8,6 +8,7 @@ public class scr_Grass_Controller : MonoBehaviour
     public bool isGrassy = true;
     private bool isDead;
     private Animator anim;
+    [SerializeField] private GameObject placementEffect, reGrassEffect;
 
     private void Start()
     {
@@ -23,10 +24,12 @@ public class scr_Grass_Controller : MonoBehaviour
         isGrassy = false;
         isActive = true;
         isDead = true;
+        GameObject newPlacementEffect = Instantiate(placementEffect, transform.position, Quaternion.identity);
+        Destroy(newPlacementEffect, 2f);
         //print(gameObject.name + " was wattered");
         yield return new WaitForSeconds(.2f);//wait a bit
 
-        Transform parent = spawnableObj.GetComponent<scr_Turret_Controller>() != null ?scr_Reference_Manager.turretHolder.transform: scr_Reference_Manager.barrierHolder.transform;
+        Transform parent = spawnableObj.GetComponent<scr_Turret_Controller>() != null ? scr_Reference_Manager.turretHolder.transform : scr_Reference_Manager.barrierHolder.transform;
         GameObject newSpawnable = Instantiate(spawnableObj, transform.position, transform.rotation, parent);//instatiate wall
         newSpawnable.GetComponent<scr_DeathSproutReset_Controller>().originSprout = gameObject;
         //Destroy(gameObject);//die
@@ -42,5 +45,10 @@ public class scr_Grass_Controller : MonoBehaviour
     public void RegenerateGrass()
     {
         isGrassy = true;
+    }
+    public void RegrassEffect()
+    {
+        GameObject newReGrasstEffect = Instantiate(reGrassEffect, transform.position, Quaternion.identity);
+        Destroy(newReGrasstEffect, 3f);
     }
 }
