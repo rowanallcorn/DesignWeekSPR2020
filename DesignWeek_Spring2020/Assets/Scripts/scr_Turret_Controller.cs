@@ -45,8 +45,6 @@ public class scr_Turret_Controller : MonoBehaviour
                 { ray.collider.GetComponent<scr_Player_Controller>().Stunned(); }
                 if (ray.collider.gameObject.layer == LayerMask.NameToLayer("SproutObstacle"))
                 { ray.collider.GetComponent<scr_SproutObstacle_Controller>().takeDamage(); }
-
-
             }
         }
     }
