@@ -23,8 +23,12 @@ public class scr_TransitionScenes : MonoBehaviour
             }
         }
     }
-    public void LoadNewScene()
+    public void TransitionToSpecificScene(int tempNewScene)//called from another script
     {
-        SceneManager.LoadScene(newScene);
+        newScene = tempNewScene;
+        anim.SetTrigger("Transition");
+        transitioned = true;
     }
+    private void LoadNewScene()//called from anim
+    { SceneManager.LoadScene(newScene); }
 }

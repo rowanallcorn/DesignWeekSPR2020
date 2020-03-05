@@ -8,9 +8,12 @@ public class scr_Reference_Manager : MonoBehaviour
     public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder, barrierHolder, effectsHolder;
     [SerializeField] private scr_Sound_Manager s_SoundManagerRef;
     public static scr_Sound_Manager s_Sound_Manager;
+    [SerializeField]private scr_TransitionScenes s_TransitionScenesRef;
+    public static scr_TransitionScenes s_TransitionScenes;
     public static int playerOneWaterDroplets,playerTwoWaterDroplets;
     void Awake()
     {
+        s_TransitionScenes = s_TransitionScenesRef;
         barrierPrefab = barrierPrefabRef;
         turretPrefab = turretPrefabRef;
         projectileHolder = projectileHolderRef;

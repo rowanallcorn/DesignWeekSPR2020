@@ -57,7 +57,8 @@ public class scr_Flower_Controller : MonoBehaviour
     }
     public void Die()//called from animation event
     {
-        scr_GameState_Manager.GameOver(playerId);
+        //scr_GameState_Manager.GameOver(playerId);
+        scr_Reference_Manager.s_TransitionScenes.TransitionToSpecificScene(playerId+1);
         Destroy(gameObject);
     }
     IEnumerator Flash()
