@@ -9,6 +9,7 @@ public class scr_Flower_Controller : MonoBehaviour
     [SerializeField] private bool movingDown;
     [SerializeField] private float health;
     private Animator anim;
+    private bool isDead;
 
     private void Start()
     {
@@ -30,7 +31,17 @@ public class scr_Flower_Controller : MonoBehaviour
         }
         if (health <= 0)
         {
-            Die();
+            if (speed > .2f)
+            { speed -= 6 * Time.deltaTime; print("hmmm"); }
+            else if (speed < -.2f)
+            { speed += 6 * Time.deltaTime; print("hmmm"); }
+            else { speed = 0; }
+
+            if (!isDead)
+            {
+                isDead = true;
+                anim.SetTrigger("Hit");
+            }
         }
     }
     public void TakeDamage()
@@ -39,7 +50,7 @@ public class scr_Flower_Controller : MonoBehaviour
         anim.SetTrigger("Hit");
         speed *= 1.7f;
     }
-    void Die()
+    public void Die()//called from animation event
     {
         scr_GameState_Manager.GameOver(playerId);
         Destroy(gameObject);
