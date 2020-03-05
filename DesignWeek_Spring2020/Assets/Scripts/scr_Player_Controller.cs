@@ -67,6 +67,7 @@ public class scr_Player_Controller : MonoBehaviour
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
             { Action(barrierPrefab); }
         }
+        else { rb.velocity = Vector2.zero; }
     }
     private void SetTargetIconState()
     {
@@ -98,6 +99,11 @@ public class scr_Player_Controller : MonoBehaviour
             watering = false;
             scr_Sound_Manager.PlayAudioClip(audioClips[1], 0, false, .03f);
             scr_Sound_Manager.PlayAudioClip(audioClips[2], 0, false, .5f);
+        }
+        if (stunned)
+        {
+            //TODO call sound
+            stunned = false;
         }
     }
     private void Movement()
@@ -148,6 +154,7 @@ public class scr_Player_Controller : MonoBehaviour
         anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);//set to idle or not
         anim.SetBool("Watering", watering);//set to watering or not
         anim.SetBool("Refilling", refilling);//set to refilling  or not
+        anim.SetBool("Hit", stunned);//set to refilling  or not
         //Set direction and movement animations
         if (setAnim != facingDir)
         {
@@ -173,7 +180,7 @@ public class scr_Player_Controller : MonoBehaviour
         Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position - (Vector2)transform.up * .5f + currentSproutCheckOffset * .5f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestColl = null;
-        if (tiles.Length > 0)
+        if (tiles.Length > 0&&!stopInput)
         {
             if (tiles.Length > 1)
             {
