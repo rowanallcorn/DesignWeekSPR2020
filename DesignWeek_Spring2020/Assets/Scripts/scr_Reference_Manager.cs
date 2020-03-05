@@ -8,6 +8,7 @@ public class scr_Reference_Manager : MonoBehaviour
     public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder, barrierHolder, effectsHolder;
     public static AudioSource[] audioSources;
     public static scr_Sound_Manager s_Sound_Manager;
+    public static int playerOneWaterDroplets,playerTwoWaterDroplets;
     void Awake()
     {
         barrierPrefab = barrierPrefabRef;
