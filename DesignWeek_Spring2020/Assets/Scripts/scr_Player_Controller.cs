@@ -201,13 +201,22 @@ public class scr_Player_Controller : MonoBehaviour
             }
         }
     }
-    public void StopGettingWater()
+    public void GetInputBack()
     {
-        refilling = false;
+        if (refilling)
+        {
+            waterDroplets += 1;
+            refilling = false;
+        }
+        if (stunned)
+        {
+            stunned = false;
+        }
         stopInput = false;
     }
     public void Stunned()
     {
+        stopInput = true;
         stunned = true;
     }
 }
