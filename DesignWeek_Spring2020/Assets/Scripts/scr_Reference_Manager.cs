@@ -6,7 +6,7 @@ public class scr_Reference_Manager : MonoBehaviour
 {
     [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef, turretHolderRef, barrierHolderRef, audioSourcesHolderRef, effectsHolderRef;
     public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder, barrierHolder, effectsHolder;
-    public static AudioSource[] audioSources;
+    [SerializeField] private scr_Sound_Manager s_SoundManagerRef;
     public static scr_Sound_Manager s_Sound_Manager;
     public static int playerOneWaterDroplets,playerTwoWaterDroplets;
     void Awake()
@@ -17,8 +17,7 @@ public class scr_Reference_Manager : MonoBehaviour
         turretHolder = turretHolderRef;
         barrierHolder = barrierHolderRef;
         effectsHolder = effectsHolderRef;
-        audioSources = audioSourcesHolderRef.GetComponentsInChildren<AudioSource>();
-        s_Sound_Manager = GetComponent<scr_Sound_Manager>();
+        s_Sound_Manager = s_SoundManagerRef;
 
     }
 

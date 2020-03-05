@@ -234,10 +234,13 @@ public class scr_Player_Controller : MonoBehaviour
         {
             waterDroplets += 1;
             refilling = false;
+            
         }
         if (stunned)
         {
+            
             stunned = false;
+            
         }
         stopInput = false;
     }
@@ -245,6 +248,7 @@ public class scr_Player_Controller : MonoBehaviour
     {
         stopInput = true;
         stunned = true;
+        scr_Reference_Manager.s_Sound_Manager.PlaySound("stun");
         myColl.enabled = false;
     }
 }
