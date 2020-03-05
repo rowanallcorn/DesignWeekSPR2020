@@ -119,7 +119,7 @@ public class scr_Player_Controller : MonoBehaviour
         rb.position = new Vector2(ClampedX, ClampedY);
     }
     private void FacingDirection()
-    {//Get a number from 0 to 3 to determine the facing direction ((1)right,(2)left,(3)up,(4)down)
+    {//Get a number from 0 to 3 to determine the facing direction ((0)right,(1)left,(2)up,(3)down)
         if (movementInput.magnitude > joystickDeadZone)
         {
             if (Mathf.Abs(movementInput.x) > Mathf.Abs(movementInput.y))
@@ -131,6 +131,7 @@ public class scr_Player_Controller : MonoBehaviour
     private void SetAnimations()
     {
         anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);
+        anim.SetBool("Watering", watering);
         if (setAnim != facingDir)
         {
             switch (facingDir)
