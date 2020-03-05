@@ -197,7 +197,7 @@ public class scr_Player_Controller : MonoBehaviour
 
             if (closestColl.gameObject.layer == LayerMask.NameToLayer("Grass"))
             {
-                if (!closestColl.GetComponent<scr_Grass_Controller>().isActive && closestColl.GetComponent<scr_Grass_Controller>().isGrassy)
+                if (!closestColl.GetComponent<scr_Grass_Controller>().isActive && closestColl.GetComponent<scr_Grass_Controller>().isGrassy && waterDroplets > 0)
                 { return closestColl.gameObject; }
                 else { return null; }
             }
