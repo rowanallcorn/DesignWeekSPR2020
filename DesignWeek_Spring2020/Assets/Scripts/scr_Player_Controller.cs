@@ -28,6 +28,7 @@ public class scr_Player_Controller : MonoBehaviour
     private GameObject targetTile;
     private bool watering;
     public int waterDroplets;
+    private bool stopInput;
 
 
     void Start()
@@ -40,21 +41,31 @@ public class scr_Player_Controller : MonoBehaviour
     }
     void Update()
     {
-        //GetMovement Input
-        movementInput = s_PlayerInput_Component.GetMovementInput(
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), leftKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
+        HandlePlayerInput();//GetMovement Input
         Movement();//run movement code
-        //Constrain pllayer to gamespace
-        float ClampedX = Mathf.Clamp(rb.position.x, gameSpaceMinBoundaries.x, gameSpaceMaxBoundaries.x);
-        float ClampedY = Mathf.Clamp(rb.position.y, gameSpaceMinBoundaries.y, gameSpaceMaxBoundaries.y);
-        rb.position = new Vector2(ClampedX, ClampedY);
-
-        FacingDirection();//run facing dirrection code
-        //Spawning turrets and barriers
-        targetTile = GetTargetTile();
+        FacingDirection();//run facing direction code
+        SetAnimations();//Trigger animations
+        targetTile = GetTargetTile();//Get closest interactible tile
+        SetTargetIconState();//set target icon's color and position 
+        ManageAudio(); //Trigger audio clips
+    }
+    private void HandlePlayerInput()
+    {
+        if (!stopInput)
+        {
+            movementInput = s_PlayerInput_Component.GetMovementInput(
+                (KeyCode)System.Enum.Parse(typeof(KeyCode), leftKey),
+                (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
+                (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
+                (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
+            { Action(turretPrefab); }
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
+            { Action(barrierPrefab); }
+        }
+    }
+    private void SetTargetIconState()
+    {
         if (targetTile != null)
         {
             if (targetTile.layer == LayerMask.NameToLayer("Grass"))
@@ -62,21 +73,6 @@ public class scr_Player_Controller : MonoBehaviour
             else { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = waterPlacementUI; }
         }
         else { targetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
-
-        //water spawnables
-
-
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
-        { Action(turretPrefab); }
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
-        { Action(barrierPrefab); }
-
-        //audio
-        ManageAudio();
-
-
-
-
     }
     private void ManageAudio()
     {
@@ -117,6 +113,10 @@ public class scr_Player_Controller : MonoBehaviour
         }
         rb.velocity = new Vector2(movementSpeed.x, movementSpeed.y);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxMovementSpeed);//clamp velocity
+        //clamp player to gamespace
+        float ClampedX = Mathf.Clamp(rb.position.x, gameSpaceMinBoundaries.x, gameSpaceMaxBoundaries.x);
+        float ClampedY = Mathf.Clamp(rb.position.y, gameSpaceMinBoundaries.y, gameSpaceMaxBoundaries.y);
+        rb.position = new Vector2(ClampedX, ClampedY);
     }
     private void FacingDirection()
     {//Get a number from 0 to 3 to determine the facing direction ((1)right,(2)left,(3)up,(4)down)
@@ -127,7 +127,9 @@ public class scr_Player_Controller : MonoBehaviour
             else { facingDir = Mathf.Sign(movementInput.y) > 0 ? 2 : 3; }
             currentSproutCheckOffset = sproutCheckOffsets[(int)facingDir];
         }
-        //Trigger animations
+    }
+    private void SetAnimations()
+    {
         anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);
         if (setAnim != facingDir)
         {
@@ -165,14 +167,15 @@ public class scr_Player_Controller : MonoBehaviour
                 }
             }
             else { closestColl = tiles[0]; }
+
             if (closestColl.gameObject.layer == LayerMask.NameToLayer("Grass"))
             {
                 if (!closestColl.GetComponent<scr_Grass_Controller>().isActive && closestColl.GetComponent<scr_Grass_Controller>().isGrassy)
                 { return closestColl.gameObject; }
                 else { return null; }
             }
-            else { return closestColl.gameObject; }
-
+            else if (waterDroplets < 3) { return closestColl.gameObject; }
+            else { return null; }
         }
         else { return null; }
 
@@ -189,7 +192,13 @@ public class scr_Player_Controller : MonoBehaviour
                 targetTile.GetComponent<scr_Grass_Controller>().Activate(spawnable);
             }
             if (targetTile.layer == LayerMask.NameToLayer("WaterTile"))
-            {    }
+            {
+                stopInput = true;
+            }
         }
+    }
+    public void StopGettingWater()
+    {
+        stopInput = false;
     }
 }

@@ -1090,11 +1090,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
-        type: 3}
-      propertyPath: waterDroplets
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}
 --- !u!4 &240929125 stripped
