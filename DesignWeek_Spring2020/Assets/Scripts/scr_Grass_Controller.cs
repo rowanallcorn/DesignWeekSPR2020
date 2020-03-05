@@ -24,7 +24,7 @@ public class scr_Grass_Controller : MonoBehaviour
         isGrassy = false;
         isActive = true;
         isDead = true;
-        GameObject newPlacementEffect = Instantiate(placementEffect, transform.position, Quaternion.identity);
+        GameObject newPlacementEffect = Instantiate(placementEffect, transform.position, Quaternion.identity, scr_Reference_Manager.effectsHolder.transform);
         Destroy(newPlacementEffect, 2f);
         //print(gameObject.name + " was wattered");
         yield return new WaitForSeconds(.2f);//wait a bit
@@ -48,7 +48,7 @@ public class scr_Grass_Controller : MonoBehaviour
     }
     public void RegrassEffect()
     {
-        GameObject newReGrasstEffect = Instantiate(reGrassEffect, transform.position, Quaternion.identity);
-        Destroy(newReGrasstEffect, 3f);
+        GameObject newReGrasstEffect = Instantiate(reGrassEffect, transform.position, Quaternion.identity,scr_Reference_Manager.effectsHolder.transform);
+        Destroy(newReGrasstEffect, 5f);
     }
 }

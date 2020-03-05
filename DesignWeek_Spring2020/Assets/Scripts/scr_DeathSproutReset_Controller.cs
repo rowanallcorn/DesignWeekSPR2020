@@ -12,7 +12,7 @@ public class scr_DeathSproutReset_Controller : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
-            GameObject newParticleEffect = Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
+            GameObject newParticleEffect = Instantiate(deathParticleEffect, transform.position, Quaternion.identity, scr_Reference_Manager.effectsHolder.transform);
             Destroy(newParticleEffect, 2f);
             originSprout.GetComponent<scr_Grass_Controller>().isActive = false;
             Destroy(gameObject, .2f);

@@ -7,7 +7,7 @@ public class scr_Player_Controller : MonoBehaviour
     //components
     private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
-    private Animator anim;
+    private Animator anim, targetIconAnim;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
@@ -25,10 +25,12 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] private List<Vector2> sproutCheckOffsets;
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
-    private GameObject targetTile;
+    private GameObject targetTile, currentLockedTile;
     private bool watering;
     public int waterDroplets;
-    private bool stopInput,stunned,refilling;
+    private bool stopInput, stunned, refilling;
+    private float targetIconAlpha;
+
 
 
     void Start()
@@ -38,6 +40,7 @@ public class scr_Player_Controller : MonoBehaviour
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
         turretPrefab = scr_Reference_Manager.turretPrefab;
         anim = GetComponent<Animator>();
+        targetIconAnim = targetIcon.GetComponent<Animator>();
     }
     void Update()
     {
@@ -45,8 +48,9 @@ public class scr_Player_Controller : MonoBehaviour
         Movement();//run movement code
         FacingDirection();//run facing direction code
         SetAnimations();//Trigger animations
-        targetTile = GetTargetTile();//Get closest interactible tile
+
         SetTargetIconState();//set target icon's color and position 
+        targetTile = GetTargetTile();//Get closest interactible tile
         ManageAudio(); //Trigger audio clips
     }
     private void HandlePlayerInput()
@@ -68,11 +72,22 @@ public class scr_Player_Controller : MonoBehaviour
     {
         if (targetTile != null)
         {
+            if (currentLockedTile != targetTile)
+            {
+                targetIconAnim.SetTrigger("Reset");
+                targetIconAlpha = 0;
+                currentLockedTile = targetTile;
+            }
             if (targetTile.layer == LayerMask.NameToLayer("Grass"))
-            { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = grassPLacementUI; }
-            else { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = waterPlacementUI; }
+            { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = new Color(grassPLacementUI.r, grassPLacementUI.g, grassPLacementUI.b, targetIconAlpha); }
+            else { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = new Color(waterPlacementUI.r, waterPlacementUI.g, waterPlacementUI.b, targetIconAlpha); }
+            targetIconAlpha = Mathf.Clamp(targetIconAlpha += 2.5f * Time.deltaTime,0,1);
         }
-        else { targetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
+        else
+        {
+            targetIconAlpha = 0;
+            targetIcon.GetComponent<SpriteRenderer>().color = Color.clear; 
+        }
     }
     private void ManageAudio()
     {
@@ -155,7 +170,7 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private GameObject GetTargetTile()
     {
-        Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .3f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
+        Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position - (Vector2)transform.up * .5f + currentSproutCheckOffset * .5f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestColl = null;
         if (tiles.Length > 0)
