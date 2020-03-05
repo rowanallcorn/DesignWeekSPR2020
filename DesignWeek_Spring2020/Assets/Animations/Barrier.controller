@@ -60,7 +60,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Barrier-Idle1
-  m_Speed: 0.2
+  m_Speed: 0.14
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7900617974715651400}
@@ -219,7 +219,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Barrier-Idle2
-  m_Speed: 0.2
+  m_Speed: 0.16
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6386928842441724456}

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class scr_Sound_Manager : MonoBehaviour
 {
-    public static void PlayAudioClip(AudioClip newAudioClip, float delay, bool looping)
+    public static void PlayAudioClip(AudioClip newAudioClip, float delay, bool looping,float volume)
     {
         scr_Sound_Manager thisScript = scr_Reference_Manager.s_Sound_Manager;//get reference to self
         AudioSource newAudioSource = thisScript.GetFreeAudioSource(newAudioClip,looping);//find free audio source
         if (newAudioSource != null)
         {
             newAudioSource.clip = newAudioClip;//set clip to default
+            newAudioSource.volume = volume;
             newAudioSource.PlayDelayed(delay);//play clip
             float clipDuration = newAudioClip.length;//get clips length
             thisScript.StartCoroutine(thisScript.ResetAudioSource(newAudioSource, clipDuration)); //call audio source reset
@@ -21,6 +22,8 @@ public class scr_Sound_Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         audioSource.clip = null;
+        audioSource.volume = 1;
+        
     }
 
     public AudioSource GetFreeAudioSource(AudioClip newAudioCLip,bool looping)

@@ -52,10 +52,12 @@ public class scr_Player_Controller : MonoBehaviour
 
         FacingDirection();//run facing dirrection code
         //Spawning turrets and barriers
-        targetGrass = GetTargetGrass();
+        targetGrass = GetTargetTile();
         if (targetGrass != null)
         {
-            grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.white;
+            if (targetGrass.layer == LayerMask.NameToLayer("Grass"))
+            { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.white; }
+            else { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.red; }
         }
         else { grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
@@ -72,12 +74,12 @@ public class scr_Player_Controller : MonoBehaviour
     private void ManageAudio()
     {
         if (rb.velocity.magnitude > .2f)
-        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0,true); }
+        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0, true, 1); }
         if (watering)
         {
             watering = false;
-            scr_Sound_Manager.PlayAudioClip(audioClips[1], 0,false);
-            scr_Sound_Manager.PlayAudioClip(audioClips[2], 0,false);
+            scr_Sound_Manager.PlayAudioClip(audioClips[1], 0, false, .03f);
+            scr_Sound_Manager.PlayAudioClip(audioClips[2], 0, false, .5f);
         }
     }
     private void Movement()
@@ -139,26 +141,31 @@ public class scr_Player_Controller : MonoBehaviour
             }
         }
     }
-    private GameObject GetTargetGrass()
+    private GameObject GetTargetTile()
     {
-        Collider2D[] grassTiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .3f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass"));
+        Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position + currentSproutCheckOffset * .3f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
         float smallestDist = Mathf.Infinity;
-        Collider2D closestGrassColl = null;
-        if (grassTiles.Length > 0)
+        Collider2D closestColl = null;
+        if (tiles.Length > 0)
         {
-            if (grassTiles.Length > 1)
+            if (tiles.Length > 1)
             {
-                foreach (Collider2D coll in grassTiles)
+                foreach (Collider2D coll in tiles)
                 {
                     float myDist = Vector2.Distance(transform.position, coll.transform.position);
                     if (myDist < smallestDist)
-                    { smallestDist = myDist; closestGrassColl = coll; }
+                    { smallestDist = myDist; closestColl = coll; }
                 }
             }
-            else { closestGrassColl = grassTiles[0]; }
-            if (!closestGrassColl.GetComponent<scr_Grass_Controller>().isActive && closestGrassColl.GetComponent<scr_Grass_Controller>().isGrassy)
-            { return closestGrassColl.gameObject; }
-            else { return null; }
+            else { closestColl = tiles[0]; }
+            if (closestColl.gameObject.layer == LayerMask.NameToLayer("Grass"))
+            {
+                if (!closestColl.GetComponent<scr_Grass_Controller>().isActive && closestColl.GetComponent<scr_Grass_Controller>().isGrassy)
+                { return closestColl.gameObject; }
+                else { return null; }
+            }
+            else { return closestColl.gameObject; }
+
         }
         else { return null; }
 
@@ -171,7 +178,7 @@ public class scr_Player_Controller : MonoBehaviour
             if (targetGrass.GetComponent<scr_Grass_Controller>() != null)
             {
                 watering = true;
-                targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable); 
+                targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable);
             }
         }
     }
