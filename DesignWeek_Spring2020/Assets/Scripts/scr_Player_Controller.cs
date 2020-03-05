@@ -109,6 +109,7 @@ public class scr_Player_Controller : MonoBehaviour
         {
             //TODO call sound
             stunned = false;
+            scr_Sound_Manager.PlayAudioClip(audioClips[3], 0, false, .03f);
         }
     }
     private void Movement()
