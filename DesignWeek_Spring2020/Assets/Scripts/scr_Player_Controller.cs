@@ -98,18 +98,16 @@ public class scr_Player_Controller : MonoBehaviour
     private void ManageAudio()
     {
         if (rb.velocity.magnitude > .2f)
-        { scr_Sound_Manager.PlayAudioClip(audioClips[0], 0, true, 1); }
+        { 
+        }
         if (watering)
         {
             watering = false;
-            scr_Sound_Manager.PlayAudioClip(audioClips[1], 0, false, .03f);
-            scr_Sound_Manager.PlayAudioClip(audioClips[2], 0, false, .5f);
         }
         if (stunned)
         {
             //TODO call sound
             stunned = false;
-            scr_Sound_Manager.PlayAudioClip(audioClips[3], 0, false, .03f);
         }
     }
     private void Movement()
