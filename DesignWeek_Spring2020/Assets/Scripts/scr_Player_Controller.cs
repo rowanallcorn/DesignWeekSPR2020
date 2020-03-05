@@ -8,10 +8,11 @@ public class scr_Player_Controller : MonoBehaviour
     private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
     private Animator anim, targetIconAnim;
+    private Collider2D myColl;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
-    [SerializeField]private int pLayerID;
+    [SerializeField] private int pLayerID;
     [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey, spawnBarrierKey;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
@@ -37,6 +38,7 @@ public class scr_Player_Controller : MonoBehaviour
     void Start()
     {
         s_PlayerInput_Component = GetComponent<scr_PlayerInput_Component>();
+        myColl = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
         turretPrefab = scr_Reference_Manager.turretPrefab;
@@ -47,8 +49,12 @@ public class scr_Player_Controller : MonoBehaviour
     {
         if (pLayerID == 1) { scr_Reference_Manager.playerOneWaterDroplets = waterDroplets; }
         if (pLayerID == 2) { scr_Reference_Manager.playerTwoWaterDroplets = waterDroplets; }
-        HandlePlayerInput();//GetMovement Input
-        Movement();//run movement code
+        if (!stopInput)
+        {
+            HandlePlayerInput();//GetMovement Input
+            Movement();//run movement code
+        }
+        else { rb.velocity = Vector2.zero; }
         FacingDirection();//run facing direction code
         SetAnimations();//Trigger animations
         SetTargetIconState();//set target icon's color and position 
@@ -57,19 +63,15 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void HandlePlayerInput()
     {
-        if (!stopInput)
-        {
-            movementInput = s_PlayerInput_Component.GetMovementInput(
-                (KeyCode)System.Enum.Parse(typeof(KeyCode), leftKey),
-                (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
-                (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
-                (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
-            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
-            { Action(turretPrefab); }
-            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
-            { Action(barrierPrefab); }
-        }
-        else { rb.velocity = Vector2.zero; }
+        movementInput = s_PlayerInput_Component.GetMovementInput(
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), leftKey),
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
+        { Action(turretPrefab); }
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
+        { Action(barrierPrefab); }
     }
     private void SetTargetIconState()
     {
@@ -84,12 +86,12 @@ public class scr_Player_Controller : MonoBehaviour
             if (targetTile.layer == LayerMask.NameToLayer("Grass"))
             { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = new Color(grassPLacementUI.r, grassPLacementUI.g, grassPLacementUI.b, targetIconAlpha); }
             else { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = new Color(waterPlacementUI.r, waterPlacementUI.g, waterPlacementUI.b, targetIconAlpha); }
-            targetIconAlpha = Mathf.Clamp(targetIconAlpha += 2.5f * Time.deltaTime,0,1);
+            targetIconAlpha = Mathf.Clamp(targetIconAlpha += 2.5f * Time.deltaTime, 0, 1);
         }
         else
         {
             targetIconAlpha = 0;
-            targetIcon.GetComponent<SpriteRenderer>().color = Color.clear; 
+            targetIcon.GetComponent<SpriteRenderer>().color = Color.clear;
         }
     }
     private void ManageAudio()
@@ -110,6 +112,7 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void Movement()
     {
+
         //Horizontal Movement
         if (Mathf.Abs(movementInput.x) > joystickDeadZone)//acceleration
         { movementSpeed.x = Mathf.Clamp(movementSpeed.x + (maxMovementSpeed * movementInput.x / accTime * Time.deltaTime), -maxMovementSpeed, maxMovementSpeed); }
@@ -182,7 +185,7 @@ public class scr_Player_Controller : MonoBehaviour
         Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position - (Vector2)transform.up * .5f + currentSproutCheckOffset * .5f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestColl = null;
-        if (tiles.Length > 0&&!stopInput)
+        if (tiles.Length > 0 && !stopInput)
         {
             if (tiles.Length > 1)
             {
@@ -235,6 +238,7 @@ public class scr_Player_Controller : MonoBehaviour
         if (stunned)
         {
             stunned = false;
+            myColl.enabled = true;
         }
         stopInput = false;
     }
@@ -242,5 +246,6 @@ public class scr_Player_Controller : MonoBehaviour
     {
         stopInput = true;
         stunned = true;
+        myColl.enabled = false;
     }
 }
