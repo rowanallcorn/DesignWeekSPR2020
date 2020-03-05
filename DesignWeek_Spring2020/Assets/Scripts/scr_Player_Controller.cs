@@ -11,6 +11,7 @@ public class scr_Player_Controller : MonoBehaviour
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
+    [SerializeField]private int pLayerID;
     [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey, spawnBarrierKey;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
@@ -44,11 +45,12 @@ public class scr_Player_Controller : MonoBehaviour
     }
     void Update()
     {
+        if (pLayerID == 1) { scr_Reference_Manager.playerOneWaterDroplets = waterDroplets; }
+        if (pLayerID == 2) { scr_Reference_Manager.playerTwoWaterDroplets = waterDroplets; }
         HandlePlayerInput();//GetMovement Input
         Movement();//run movement code
         FacingDirection();//run facing direction code
         SetAnimations();//Trigger animations
-
         SetTargetIconState();//set target icon's color and position 
         targetTile = GetTargetTile();//Get closest interactible tile
         ManageAudio(); //Trigger audio clips
