@@ -53,6 +53,7 @@ public class scr_Player_Controller : MonoBehaviour
         {
             HandlePlayerInput();//GetMovement Input
             Movement();//run movement code
+            myColl.enabled = true;
         }
         else { rb.velocity = Vector2.zero; }
         FacingDirection();//run facing direction code
@@ -238,11 +239,10 @@ public class scr_Player_Controller : MonoBehaviour
         if (stunned)
         {
             stunned = false;
-            myColl.enabled = true;
         }
         stopInput = false;
     }
-    public void Stunned()
+    public void Stunned()//called from bullet collision
     {
         stopInput = true;
         stunned = true;
