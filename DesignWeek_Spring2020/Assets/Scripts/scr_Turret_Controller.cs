@@ -9,32 +9,60 @@ public class scr_Turret_Controller : MonoBehaviour
     [SerializeField] private float cooldown;
     [SerializeField] private int maxShots;
     [SerializeField] private GameObject shootingPos;
+    private LineRenderer line;
+    [SerializeField] private AnimationCurve animCurve;
+    private float lerper;
 
     private void Start()
     {
+        line = GetComponent<LineRenderer>();
+        line.enabled = false;
         s_DeathSproutReset_Controller = GetComponent<scr_DeathSproutReset_Controller>();
         StartCoroutine(StartShooting());
-        transform.localScale = transform.position.x > .1f ?new Vector2(-1,1):new Vector2(1,1);
+        transform.localScale = transform.position.x > .1f ? new Vector2(-1, 1) : new Vector2(1, 1);
     }
     IEnumerator StartShooting()
     {
         yield return new WaitForSeconds(1);
-        StartCoroutine(Cooldown());
+        ShootRay();
+        //StartCoroutine(Cooldown());
     }
-    IEnumerator Cooldown()
+
+    private void Update()
     {
-        if (maxShots > 0)
+        if (line.enabled)
         {
-            maxShots -= 1;
-            yield return new WaitForSeconds(cooldown);
-            Shoot();
-            StartCoroutine(Cooldown());
+            line.SetPosition(0, new Vector3(shootingPos.transform.position.x, shootingPos.transform.position.y, -3));
+            lerper += 1 * Time.deltaTime;
+            line.widthMultiplier = Mathf.Lerp(0, 1, animCurve.Evaluate(lerper));
+            RaycastHit2D ray = Physics2D.Raycast(shootingPos.transform.position, shootingPos.transform.up, 200, LayerMask.GetMask("SproutObstacle") + LayerMask.GetMask("Flower") + LayerMask.GetMask("BulletDestroyer") + LayerMask.GetMask("Player"));
+            if (ray)
+            {
+                line.SetPosition(1, new Vector3(ray.point.x, ray.point.y, -3));
+                if (ray.collider.gameObject.layer == LayerMask.NameToLayer("Flower"))
+                { ray.collider.GetComponent<scr_Flower_Controller>().TakeDamage();   }
+                if (ray.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+                { ray.collider.GetComponent<scr_Player_Controller>().Stunned(); }
+                if (ray.collider.gameObject.layer == LayerMask.NameToLayer("SproutObstacle"))
+                { ray.collider.GetComponent<scr_SproutObstacle_Controller>().takeDamage(); }
+
+
+            }
         }
-        else { s_DeathSproutReset_Controller.Die(); }
-
     }
-    private void Shoot()
-    {  GameObject newProjectile = Instantiate(projectilePrefab, shootingPos.transform.position, shootingPos.transform.rotation,scr_Reference_Manager.projectileHolder.transform);  }
+    void ShootRay()
+    {
+        lerper = 0;
+        line.widthMultiplier = 1;
+        line.enabled = true;
+        StartCoroutine(turnOffRay());
+    }
+    IEnumerator turnOffRay()
+    {
+        yield return new WaitForSeconds(1f);
+        line.enabled = false;
+        s_DeathSproutReset_Controller.Die();
+    }
 
-   
+
 }
