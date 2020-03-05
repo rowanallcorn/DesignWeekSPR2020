@@ -17,6 +17,7 @@ public class scr_Player_Controller : MonoBehaviour
     private GameObject barrierPrefab, turretPrefab;
     [SerializeField] private GameObject grassTargetIcon;
     [SerializeField] private List<AudioClip> audioClips;
+    [SerializeField] private Color grassPLacementUI, waterPlacementUI;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -26,6 +27,7 @@ public class scr_Player_Controller : MonoBehaviour
     private int setAnim;
     private GameObject targetGrass;
     private bool watering;
+    public int waterDroplets;
 
 
     void Start()
@@ -56,14 +58,19 @@ public class scr_Player_Controller : MonoBehaviour
         if (targetGrass != null)
         {
             if (targetGrass.layer == LayerMask.NameToLayer("Grass"))
-            { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.white; }
-            else { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.red; }
+            { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = grassPLacementUI; }
+            else { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = waterPlacementUI; }
         }
         else { grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
+
+        //water spawnables
+
+
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
         { Spawn(turretPrefab); }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
         { Spawn(barrierPrefab); }
+
         //audio
         ManageAudio();
 
@@ -173,10 +180,11 @@ public class scr_Player_Controller : MonoBehaviour
     private void Spawn(GameObject spawnable)
     {
         //check if there is a sprout
-        if (targetGrass != null)
+        if (targetGrass != null && waterDroplets > 0)
         {
             if (targetGrass.GetComponent<scr_Grass_Controller>() != null)
             {
+                waterDroplets -= 1;
                 watering = true;
                 targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable);
             }
