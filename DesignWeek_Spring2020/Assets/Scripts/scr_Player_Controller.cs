@@ -130,8 +130,10 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void SetAnimations()
     {
-        anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);
-        anim.SetBool("Watering", watering);
+        anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);//set to idle or not
+        anim.SetBool("Watering", watering);//set to watering or not
+        anim.SetBool("Refilling", stopInput);//set to refilling  or not
+        //Set direction and movement animations
         if (setAnim != facingDir)
         {
             switch (facingDir)
