@@ -107,10 +107,21 @@ PrefabInstance:
       propertyPath: gameSpaceMaxBoundaries.x
       value: 4.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: pLayerID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5819698567802815447, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 40cfa835b87d3df45853e6e4df7f0c4b, type: 2}
+    - target: {fileID: 884798269233455182, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5769576284389119494, guid: 1caa440aeda3aa34cb9d58de392eb855,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}

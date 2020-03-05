@@ -53,6 +53,7 @@ MonoBehaviour:
   maxMovementSpeed: 2
   accTime: 0.1
   decTime: 0.1
+  pLayerID: 1
   upKey: UpArrow
   downKey: DownArrow
   leftKey: LeftArrow
