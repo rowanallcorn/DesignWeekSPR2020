@@ -1025,7 +1025,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 10
+      cycleCount: 8
       repeatInterval: 0.2
       probability: 1
     - serializedVersion: 2
@@ -1083,7 +1083,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 8
+      cycleCount: 10
       repeatInterval: 0.14
       probability: 1
     - serializedVersion: 2
@@ -1141,7 +1141,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 8
+      cycleCount: 12
       repeatInterval: 0.1
       probability: 1
     - serializedVersion: 2
@@ -1199,8 +1199,8 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 14
-      repeatInterval: 0.05
+      cycleCount: 10
+      repeatInterval: 0.08
       probability: 1
   SizeModule:
     enabled: 0
@@ -1535,8 +1535,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 0}
+        key1: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
