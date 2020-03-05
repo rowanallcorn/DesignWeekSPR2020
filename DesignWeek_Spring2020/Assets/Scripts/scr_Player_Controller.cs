@@ -28,7 +28,7 @@ public class scr_Player_Controller : MonoBehaviour
     private GameObject targetTile;
     private bool watering;
     public int waterDroplets;
-    private bool stopInput;
+    private bool stopInput,stunned,refilling;
 
 
     void Start()
@@ -130,8 +130,10 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void SetAnimations()
     {
-        anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);
-        anim.SetBool("Watering", watering);
+        anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);//set to idle or not
+        anim.SetBool("Watering", watering);//set to watering or not
+        anim.SetBool("Refilling", refilling);//set to refilling  or not
+        //Set direction and movement animations
         if (setAnim != facingDir)
         {
             switch (facingDir)
@@ -195,11 +197,17 @@ public class scr_Player_Controller : MonoBehaviour
             if (targetTile.layer == LayerMask.NameToLayer("WaterTile"))
             {
                 stopInput = true;
+                refilling = true; ;
             }
         }
     }
     public void StopGettingWater()
     {
+        refilling = false;
         stopInput = false;
+    }
+    public void Stunned()
+    {
+        stunned = true;
     }
 }
