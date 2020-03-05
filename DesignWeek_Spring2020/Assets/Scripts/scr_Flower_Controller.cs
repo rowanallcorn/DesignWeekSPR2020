@@ -9,11 +9,14 @@ public class scr_Flower_Controller : MonoBehaviour
     [SerializeField] private bool movingDown;
     [SerializeField] private float health;
     private Animator anim;
+    private Collider2D myColl;
+    [SerializeField] private SpriteRenderer sr;
     private bool isDead;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        myColl = GetComponent<Collider2D>();
     }
     void Update()
     {
@@ -49,10 +52,29 @@ public class scr_Flower_Controller : MonoBehaviour
         health -= 1;
         anim.SetTrigger("Hit");
         speed *= 1.7f;
+        StartCoroutine(Flash());
+        StartCoroutine(StopFlash(1.4f));
     }
     public void Die()//called from animation event
     {
         scr_GameState_Manager.GameOver(playerId);
         Destroy(gameObject);
+    }
+    IEnumerator Flash()
+    {
+        sr.color = Color.clear;
+        yield return new WaitForSeconds(.07f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(.07f);
+        sr.color = Color.clear;
+        if (myColl.enabled)
+        { sr.color = Color.white; }
+        else { StartCoroutine(Flash()); }
+    }
+    IEnumerator StopFlash(float delay)
+    {
+        myColl.enabled = false;
+        yield return new WaitForSeconds(delay);
+        myColl.enabled = true;
     }
 }
