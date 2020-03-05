@@ -15,7 +15,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     private GameObject barrierPrefab, turretPrefab;
-    [SerializeField] private GameObject grassTargetIcon;
+    [SerializeField] private GameObject targetIcon;
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private Color grassPLacementUI, waterPlacementUI;
     //logic 
@@ -25,7 +25,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] private List<Vector2> sproutCheckOffsets;
     private Vector2 currentSproutCheckOffset;
     private int setAnim;
-    private GameObject targetGrass;
+    private GameObject targetTile;
     private bool watering;
     public int waterDroplets;
 
@@ -54,22 +54,22 @@ public class scr_Player_Controller : MonoBehaviour
 
         FacingDirection();//run facing dirrection code
         //Spawning turrets and barriers
-        targetGrass = GetTargetTile();
-        if (targetGrass != null)
+        targetTile = GetTargetTile();
+        if (targetTile != null)
         {
-            if (targetGrass.layer == LayerMask.NameToLayer("Grass"))
-            { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = grassPLacementUI; }
-            else { grassTargetIcon.transform.position = targetGrass.transform.position; grassTargetIcon.GetComponent<SpriteRenderer>().color = waterPlacementUI; }
+            if (targetTile.layer == LayerMask.NameToLayer("Grass"))
+            { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = grassPLacementUI; }
+            else { targetIcon.transform.position = targetTile.transform.position; targetIcon.GetComponent<SpriteRenderer>().color = waterPlacementUI; }
         }
-        else { grassTargetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
+        else { targetIcon.GetComponent<SpriteRenderer>().color = Color.clear; }
 
         //water spawnables
 
 
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
-        { Spawn(turretPrefab); }
+        { Action(turretPrefab); }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
-        { Spawn(barrierPrefab); }
+        { Action(barrierPrefab); }
 
         //audio
         ManageAudio();
@@ -177,17 +177,19 @@ public class scr_Player_Controller : MonoBehaviour
         else { return null; }
 
     }
-    private void Spawn(GameObject spawnable)
+    private void Action(GameObject spawnable)
     {
-        //check if there is a sprout
-        if (targetGrass != null && waterDroplets > 0)
+        if (targetTile != null)
         {
-            if (targetGrass.GetComponent<scr_Grass_Controller>() != null)
+            //water spawnable
+            if (targetTile.GetComponent<scr_Grass_Controller>() != null && waterDroplets > 0)
             {
                 waterDroplets -= 1;
                 watering = true;
-                targetGrass.GetComponent<scr_Grass_Controller>().Activate(spawnable);
+                targetTile.GetComponent<scr_Grass_Controller>().Activate(spawnable);
             }
+            if (targetTile.layer == LayerMask.NameToLayer("WaterTile"))
+            {    }
         }
     }
 }

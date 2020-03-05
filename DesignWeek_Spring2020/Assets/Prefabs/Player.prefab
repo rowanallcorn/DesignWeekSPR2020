@@ -62,7 +62,7 @@ MonoBehaviour:
   joystickDeadZone: 0.4
   gameSpaceMinBoundaries: {x: -4.95, y: -3.4}
   gameSpaceMaxBoundaries: {x: -1.05, y: 3.9}
-  grassTargetIcon: {fileID: 5496407589450110918}
+  targetIcon: {fileID: 5496407589450110918}
   audioClips:
   - {fileID: 8300000, guid: 0def35ccefca8224cbad3e0a698d6132, type: 3}
   - {fileID: 8300000, guid: 992872149b332454f8c9adc17892b3a8, type: 3}
