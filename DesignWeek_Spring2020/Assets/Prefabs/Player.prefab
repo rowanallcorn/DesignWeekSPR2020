@@ -58,8 +58,12 @@ MonoBehaviour:
   downKey: DownArrow
   leftKey: LeftArrow
   rightKey: RightArrow
-  spawnTurretKey: C
-  spawnBarrierKey: Alpha5
+  spawnTurretKey1: LeftAlt
+  spawnTurretKey2: Z
+  spawnTurretKey3: ALpha5
+  spawnBarrierKey1: LeftControl
+  spawnBarrierKey2: LeftShift
+  spawnBarrierKey3: C
   joystickDeadZone: 0.4
   gameSpaceMinBoundaries: {x: -4.95, y: -3.4}
   gameSpaceMaxBoundaries: {x: -1.05, y: 3.9}

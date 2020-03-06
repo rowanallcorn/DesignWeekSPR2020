@@ -13,7 +13,7 @@ public class scr_Player_Controller : MonoBehaviour
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
     [SerializeField] private int pLayerID;
-    [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey, spawnBarrierKey;
+    [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey1, spawnTurretKey2, spawnTurretKey3, spawnBarrierKey1, spawnBarrierKey2, spawnBarrierKey3;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     private GameObject barrierPrefab, turretPrefab;
@@ -69,9 +69,9 @@ public class scr_Player_Controller : MonoBehaviour
             (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
             (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
             (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey)))
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey1)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey2)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey3)))
         { Action(turretPrefab); }
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey)))
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey1)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey2)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey3)))
         { Action(barrierPrefab); }
     }
     private void SetTargetIconState()
@@ -98,7 +98,7 @@ public class scr_Player_Controller : MonoBehaviour
     private void ManageAudio()
     {
         if (rb.velocity.magnitude > .2f)
-        { 
+        {
         }
         if (watering)
         {
@@ -234,13 +234,13 @@ public class scr_Player_Controller : MonoBehaviour
         {
             waterDroplets += 1;
             refilling = false;
-            
+
         }
         if (stunned)
         {
-            
+
             stunned = false;
-            
+
         }
         stopInput = false;
     }
