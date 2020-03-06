@@ -12,9 +12,12 @@ public class scr_Flower_Controller : MonoBehaviour
     private Collider2D myColl;
     [SerializeField] private SpriteRenderer sr;
     private bool isDead;
+    private AudioSource audio;
+   [SerializeField] private AudioClip hitAudio, deathAudio;
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         myColl = GetComponent<Collider2D>();
     }
@@ -44,6 +47,7 @@ public class scr_Flower_Controller : MonoBehaviour
             {
                 isDead = true;
                 anim.SetTrigger("Hit");
+                audio.PlayOneShot(deathAudio);
             }
         }
     }
@@ -54,6 +58,7 @@ public class scr_Flower_Controller : MonoBehaviour
         speed *= 1.7f;
         StartCoroutine(Flash());
         StartCoroutine(StopFlash(1.4f));
+        audio.PlayOneShot(hitAudio);
     }
     public void Die()//called from animation event
     {
