@@ -9,15 +9,20 @@ public class scr_TransitionScenes : MonoBehaviour
     [SerializeField] private int newScene;
     private Animator anim;
     private bool transitioned;
+    private float birthTime;
+    [SerializeField] private float minWaitInSeconds;
 
     private void Start()
-    {  anim = GetComponent<Animator>();  }
+    {
+        anim = GetComponent<Animator>();
+        birthTime = Time.time;
+    }
     void Update()
     {
         if (onAnyKey)
         {
-            if (Input.anyKey&& !transitioned)
-            { 
+            if (Input.anyKey && !transitioned&&Time.time>birthTime+ minWaitInSeconds)
+            {
                 anim.SetTrigger("Transition");
                 transitioned = true;
             }

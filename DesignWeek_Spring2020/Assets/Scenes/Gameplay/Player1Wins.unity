@@ -14095,6 +14095,11 @@ PrefabInstance:
       propertyPath: onAnyKey
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1720187523675317916, guid: ea235bc90f7ad5740b4a2756e1c5d36a,
+        type: 3}
+      propertyPath: minWaitInSeconds
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 927939705573134584, guid: ea235bc90f7ad5740b4a2756e1c5d36a,
         type: 3}
       propertyPath: m_SizeDelta.y

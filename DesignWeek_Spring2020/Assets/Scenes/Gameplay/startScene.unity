@@ -3684,6 +3684,7 @@ MonoBehaviour:
   audioSourcesHolderRef: {fileID: 1166769908}
   effectsHolderRef: {fileID: 0}
   s_SoundManagerRef: {fileID: 0}
+  s_TransitionScenesRef: {fileID: 0}
 --- !u!4 &594809467
 Transform:
   m_ObjectHideFlags: 0
@@ -16353,6 +16354,11 @@ PrefabInstance:
     - target: {fileID: 1720187523675317916, guid: ea235bc90f7ad5740b4a2756e1c5d36a,
         type: 3}
       propertyPath: onAnyKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720187523675317916, guid: ea235bc90f7ad5740b4a2756e1c5d36a,
+        type: 3}
+      propertyPath: minWaitInSeconds
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 927939705573134584, guid: ea235bc90f7ad5740b4a2756e1c5d36a,

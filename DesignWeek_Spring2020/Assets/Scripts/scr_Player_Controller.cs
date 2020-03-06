@@ -182,7 +182,7 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private GameObject GetTargetTile()
     {
-        Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position - (Vector2)transform.up * .5f + currentSproutCheckOffset * .5f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
+        Collider2D[] tiles = Physics2D.OverlapBoxAll((Vector2)transform.position - (Vector2)transform.up * .5f + currentSproutCheckOffset * .9f, new Vector2(.1f, .1f), 0, LayerMask.GetMask("Grass") + LayerMask.GetMask("WaterTile"));
         float smallestDist = Mathf.Infinity;
         Collider2D closestColl = null;
         if (tiles.Length > 0 && !stopInput)
