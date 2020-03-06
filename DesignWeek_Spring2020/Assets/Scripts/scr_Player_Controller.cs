@@ -9,6 +9,7 @@ public class scr_Player_Controller : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim, targetIconAnim;
     private Collider2D myColl;
+    private AudioSource audio;
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
@@ -30,7 +31,7 @@ public class scr_Player_Controller : MonoBehaviour
     private GameObject targetTile, currentLockedTile;
     private bool watering;
     public int waterDroplets;
-    private bool stopInput, stunned, refilling;
+    private bool stopInput, stunned, refilling,refill;
     private float targetIconAlpha;
 
 
@@ -44,6 +45,7 @@ public class scr_Player_Controller : MonoBehaviour
         turretPrefab = scr_Reference_Manager.turretPrefab;
         anim = GetComponent<Animator>();
         targetIconAnim = targetIcon.GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -103,12 +105,32 @@ public class scr_Player_Controller : MonoBehaviour
         if (watering)
         {
             watering = false;
+            PlayAudio(audioClips[2], 1,Mathf.Infinity);
         }
         if (stunned)
         {
-            //TODO call sound
+            PlayAudio(audioClips[3], .4f,0);
             stunned = false;
         }
+        if (refill)
+        {
+            refill = false;
+            PlayAudio(audioClips[4], .4f,3);
+        }
+    }
+    private void PlayAudio(AudioClip clip, float volume,float loopRuns)
+    {
+        audio.clip = clip;
+        audio.PlayOneShot(clip);
+        audio.volume = volume;
+        if (loopRuns>0)
+        { StartCoroutine(LoopAudio(clip, clip.length,loopRuns)) ; }
+    }
+    IEnumerator LoopAudio(AudioClip clip, float delay, float loopRuns)
+    {
+        yield return new WaitForSeconds(delay);
+        if (audio.clip == clip)
+        { PlayAudio(clip, audio.volume,loopRuns-1); }
     }
     private void Movement()
     {
@@ -158,7 +180,7 @@ public class scr_Player_Controller : MonoBehaviour
     {
         anim.SetBool("NotMoving", rb.velocity.magnitude < .2f);//set to idle or not
         anim.SetBool("Watering", watering);//set to watering or not
-        anim.SetBool("Refilling", refilling);//set to refilling  or not
+        anim.SetBool("Refilling", refill);//set to refilling  or not
         anim.SetBool("Hit", stunned);//set to refilling  or not
         //Set direction and movement animations
         if (setAnim != facingDir)
@@ -224,7 +246,8 @@ public class scr_Player_Controller : MonoBehaviour
             if (targetTile.layer == LayerMask.NameToLayer("WaterTile"))
             {
                 stopInput = true;
-                refilling = true; ;
+                refilling = true;
+                refill = true;
             }
         }
     }
@@ -238,9 +261,7 @@ public class scr_Player_Controller : MonoBehaviour
         }
         if (stunned)
         {
-
             stunned = false;
-
         }
         stopInput = false;
     }
@@ -248,7 +269,7 @@ public class scr_Player_Controller : MonoBehaviour
     {
         stopInput = true;
         stunned = true;
-        scr_Reference_Manager.s_Sound_Manager.PlaySound("stun");
+        //scr_Reference_Manager.s_Sound_Manager.PlaySound("stun");
         myColl.enabled = false;
     }
 }

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  lifeInSeconds: 10
+  lifeInSeconds: 25
 --- !u!114 &7809710481712489121
 MonoBehaviour:
   m_ObjectHideFlags: 0

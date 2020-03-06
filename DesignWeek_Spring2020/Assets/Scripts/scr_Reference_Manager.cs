@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class scr_Reference_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef, turretHolderRef, barrierHolderRef, audioSourcesHolderRef, effectsHolderRef;
+    [SerializeField] private GameObject barrierPrefabRef, turretPrefabRef, projectileHolderRef, turretHolderRef, barrierHolderRef, effectsHolderRef;
     public static GameObject barrierPrefab, turretPrefab, projectileHolder, turretHolder, barrierHolder, effectsHolder;
-    [SerializeField] private scr_Sound_Manager s_SoundManagerRef;
     public static scr_Sound_Manager s_Sound_Manager;
     [SerializeField]private scr_TransitionScenes s_TransitionScenesRef;
     public static scr_TransitionScenes s_TransitionScenes;
@@ -20,7 +19,6 @@ public class scr_Reference_Manager : MonoBehaviour
         turretHolder = turretHolderRef;
         barrierHolder = barrierHolderRef;
         effectsHolder = effectsHolderRef;
-        s_Sound_Manager = s_SoundManagerRef;
 
     }
 

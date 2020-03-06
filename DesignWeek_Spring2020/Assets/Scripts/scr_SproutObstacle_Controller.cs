@@ -22,8 +22,8 @@ public class scr_SproutObstacle_Controller : MonoBehaviour
         if (health <= 0&&!wasShot)
         { StartCoroutine(Die(0)); }
         waterGunned+= 1/ lifeInSeconds * Time.deltaTime;
-        if (health == 3 && waterGunned > .33f) DieABit();
-        if (health == 2 && waterGunned > .66f) DieABit();
+        if (health == 3 && waterGunned > .5f) DieABit();
+        if (health == 2 && waterGunned > .8f) DieABit();
         if (health == 1 && waterGunned > .99f) DieABit();
     }
     public void takeDamage()//called from bullet

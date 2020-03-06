@@ -6061,7 +6061,6 @@ GameObject:
   m_Component:
   - component: {fileID: 594809467}
   - component: {fileID: 594809466}
-  - component: {fileID: 594809469}
   - component: {fileID: 594809470}
   m_Layer: 0
   m_Name: GameManager
@@ -6089,9 +6088,7 @@ MonoBehaviour:
   projectileHolderRef: {fileID: 47852201}
   turretHolderRef: {fileID: 757592006}
   barrierHolderRef: {fileID: 1488687870}
-  audioSourcesHolderRef: {fileID: 1166769908}
   effectsHolderRef: {fileID: 1993175741}
-  s_SoundManagerRef: {fileID: 1199311964}
   s_TransitionScenesRef: {fileID: 2105990584}
 --- !u!4 &594809467
 Transform:
@@ -6114,29 +6111,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &594809469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594809465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b465303c1d3886141b02ee0cc056f86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stun: {fileID: 0}
-  walk: {fileID: 0}
-  water: {fileID: 0}
-  refill: {fileID: 0}
-  pumpkinBreak: {fileID: 0}
-  turretShoot: {fileID: 0}
-  flowerHit: {fileID: 0}
-  flowerDeath: {fileID: 0}
-  spawnablePlacement: {fileID: 0}
-  dropletUI: {fileID: 0}
-  turretDeath: {fileID: 0}
 --- !u!114 &594809470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11223,7 +11197,7 @@ Transform:
   - {fileID: 1691746076}
   - {fileID: 744489117}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150486867
 GameObject:
@@ -11568,157 +11542,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f70e9cd98260f4ebd419f71eb15f02, type: 3}
---- !u!1 &1199311963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1199311966}
-  - component: {fileID: 1199311965}
-  - component: {fileID: 1199311964}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1199311964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199311963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b465303c1d3886141b02ee0cc056f86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stun: {fileID: 8300000, guid: 5946a1b9431cb1640bd0e29fb977bf85, type: 3}
-  walk: {fileID: 8300000, guid: 0def35ccefca8224cbad3e0a698d6132, type: 3}
-  water: {fileID: 8300000, guid: 7ed201eb6198f6a4291f3b0263843667, type: 3}
-  refill: {fileID: 8300000, guid: d00e68dc9be6be44ea7e2e82a20b0bec, type: 3}
-  pumpkinBreak: {fileID: 8300000, guid: e0a66ad3c667d724f8cb4e5fadc94b9b, type: 3}
-  turretShoot: {fileID: 8300000, guid: 79910d3dbeba6e44ebecd7b68f3914f9, type: 3}
-  flowerHit: {fileID: 8300000, guid: 914d4e5523d57464b84b09dc54e1fcc6, type: 3}
-  flowerDeath: {fileID: 8300000, guid: 327b7b0720bd2c94ca460418a10cb728, type: 3}
-  spawnablePlacement: {fileID: 8300000, guid: 05cb2c5100d4b5043a7128ead8c4ebb4, type: 3}
-  dropletUI: {fileID: 8300000, guid: 9f89fbe9d08eefd4bb3680a45736248c, type: 3}
-  turretDeath: {fileID: 8300000, guid: 32a6f1ad9208aec4985b7ead09c9f571, type: 3}
---- !u!82 &1199311965
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199311963}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &1199311966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199311963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1203155536 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 927939704554489036, guid: ea235bc90f7ad5740b4a2756e1c5d36a,
