@@ -131,7 +131,8 @@ public class scr_Player_Controller : MonoBehaviour
         if (watering)
         {
             watering = false;
-            PlayAudio(audioClips[2], 1, Mathf.Infinity);
+            PlayAudio(audioClips[1], 1, 0);
+            PlayAudio(audioClips[2], 1, 0);
         }
         if (stunned)
         {

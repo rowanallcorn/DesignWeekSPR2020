@@ -12,9 +12,12 @@ public class scr_Turret_Controller : MonoBehaviour
     private LineRenderer line;
     [SerializeField] private AnimationCurve animCurve;
     private float lerper;
+    private AudioSource audio;
+    [SerializeField] private AudioClip deathAudio, shootAudio;
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         line = GetComponent<LineRenderer>();
         line.enabled = false;
         s_DeathSproutReset_Controller = GetComponent<scr_DeathSproutReset_Controller>();
@@ -50,6 +53,7 @@ public class scr_Turret_Controller : MonoBehaviour
     }
     void ShootRay()
     {
+        audio.PlayOneShot(shootAudio);
         lerper = 0;
         line.widthMultiplier = 1;
         line.enabled = true;
@@ -59,6 +63,7 @@ public class scr_Turret_Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         line.enabled = false;
+        audio.PlayOneShot(deathAudio);
         s_DeathSproutReset_Controller.Die();
     }
 
