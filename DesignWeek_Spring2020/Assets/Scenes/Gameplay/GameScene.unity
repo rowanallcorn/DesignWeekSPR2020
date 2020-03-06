@@ -1625,6 +1625,11 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: d00e68dc9be6be44ea7e2e82a20b0bec, type: 3}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnTurretKey3
+      value: Alpha5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad06a6ceb5d744892a29045c1f3b3a, type: 3}
 --- !u!4 &240929125 stripped

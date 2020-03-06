@@ -112,6 +112,36 @@ PrefabInstance:
       propertyPath: pLayerID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnBarrierKey1
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnBarrierKey2
+      value: W
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnBarrierKey3
+      value: RightBracket
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnTurretKey1
+      value: S
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnTurretKey2
+      value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349061467397098545, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
+        type: 3}
+      propertyPath: spawnTurretKey3
+      value: Alpha6
+      objectReference: {fileID: 0}
     - target: {fileID: 5819698567802815447, guid: e5ad06a6ceb5d744892a29045c1f3b3a,
         type: 3}
       propertyPath: m_Controller
