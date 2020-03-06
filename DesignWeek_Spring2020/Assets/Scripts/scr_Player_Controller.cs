@@ -47,6 +47,19 @@ public class scr_Player_Controller : MonoBehaviour
         targetIconAnim = targetIcon.GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
     }
+    public void GetInputBack()
+    {
+        if (refilling)
+        {
+            waterDroplets += 1;
+            refilling = false;
+        }
+        if (stunned)
+        {
+            stunned = false;
+        }
+        stopInput = false;
+    }
     void Update()
     {
         if (pLayerID == 1) { scr_Reference_Manager.playerOneWaterDroplets = waterDroplets; }
@@ -63,6 +76,7 @@ public class scr_Player_Controller : MonoBehaviour
         SetTargetIconState();//set target icon's color and position 
         targetTile = GetTargetTile();//Get closest interactible tile
         ManageAudio(); //Trigger audio clips
+
     }
     private void HandlePlayerInput()
     {
@@ -268,20 +282,7 @@ public class scr_Player_Controller : MonoBehaviour
             }
         }
     }
-    public void GetInputBack()
-    {
-        if (refilling)
-        {
-            waterDroplets += 1;
-            refilling = false;
-
-        }
-        if (stunned)
-        {
-            stunned = false;
-        }
-        stopInput = false;
-    }
+ 
     public void Stunned()//called from bullet collision
     {
         stopInput = true;

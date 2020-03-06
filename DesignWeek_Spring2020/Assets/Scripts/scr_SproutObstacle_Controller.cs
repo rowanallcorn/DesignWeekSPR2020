@@ -10,17 +10,21 @@ public class scr_SproutObstacle_Controller : MonoBehaviour
     [SerializeField] private float lifeInSeconds;
     private bool wasShot;
     private Animator anim;
+    private AudioSource audio;
+    [SerializeField] private AudioClip hitAudio;
+    [SerializeField] private AudioClip destroyedAudio;
 
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         s_DeathSproutReset_Controller = GetComponent<scr_DeathSproutReset_Controller>();
         anim = GetComponent<Animator>();
     }
     void Update()
     {
         if (health <= 0&&!wasShot)
-        { StartCoroutine(Die(0)); }
+        { StartCoroutine(Die()); wasShot = true; }
         waterGunned+= 1/ lifeInSeconds * Time.deltaTime;
         if (health == 3 && waterGunned > .5f) DieABit();
         if (health == 2 && waterGunned > .8f) DieABit();
@@ -30,10 +34,10 @@ public class scr_SproutObstacle_Controller : MonoBehaviour
     {  waterGunned += 1 * Time.deltaTime;
         if (!wasShot)
         {
+            audio.PlayOneShot(hitAudio);
             wasShot = true;
-            StartCoroutine(Die(1));
+            StartCoroutine(Die());
         }
-
     }
     void DieABit()
     {
@@ -41,9 +45,12 @@ public class scr_SproutObstacle_Controller : MonoBehaviour
         if (health > 0)
         { anim.SetTrigger("Hit"); }
     }
-    IEnumerator Die(float delay)
+    IEnumerator Die()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(.8f);
+        audio.PlayOneShot(destroyedAudio);
+        print("die");
+        yield return new WaitForSeconds(.2f);
         s_DeathSproutReset_Controller.Die();
     }
 
