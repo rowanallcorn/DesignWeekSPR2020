@@ -31,7 +31,7 @@ public class scr_Player_Controller : MonoBehaviour
     private GameObject targetTile, currentLockedTile;
     private bool watering;
     public int waterDroplets;
-    private bool stopInput, stunned, refilling,refill;
+    private bool stopInput, stunned, refilling, refill, startedWalking;
     private float targetIconAlpha;
 
 
@@ -75,6 +75,10 @@ public class scr_Player_Controller : MonoBehaviour
         { Action(turretPrefab); }
         if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey1)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey2)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey3)))
         { Action(barrierPrefab); }
+        if (movementInput.magnitude > joystickDeadZone && rb.velocity.magnitude < .2f)
+        {
+            startedWalking = true;
+        }
     }
     private void SetTargetIconState()
     {
@@ -99,38 +103,51 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void ManageAudio()
     {
-        if (rb.velocity.magnitude > .2f)
+
+        if (audio.clip == audioClips[0] && audio.isPlaying)
+        { startedWalking = false; }
+        if (audio.clip == audioClips[0] && !audio.isPlaying && rb.velocity.magnitude > .2f)
+        {   startedWalking = true;  }
+
+        if (startedWalking)
         {
+            PlayAudio(audioClips[0], 1, Mathf.Infinity);
+            startedWalking = false;
         }
         if (watering)
         {
             watering = false;
-            PlayAudio(audioClips[2], 1,Mathf.Infinity);
+            PlayAudio(audioClips[2], 1, Mathf.Infinity);
         }
         if (stunned)
         {
-            PlayAudio(audioClips[3], .4f,0);
+            PlayAudio(audioClips[3], .4f, 0);
             stunned = false;
         }
         if (refill)
         {
             refill = false;
-            PlayAudio(audioClips[4], .4f,3);
+            PlayAudio(audioClips[4], .4f, 3);
         }
     }
-    private void PlayAudio(AudioClip clip, float volume,float loopRuns)
+    private void PlayAudio(AudioClip clip, float volume, float loopRuns)
     {
+       
+        bool forceStop = false;
+        if (audio.clip == audioClips[0] && rb.velocity.magnitude < .2f)
+        { forceStop = true; }
+        //audio.Stop();
         audio.clip = clip;
         audio.PlayOneShot(clip);
         audio.volume = volume;
-        if (loopRuns>0)
-        { StartCoroutine(LoopAudio(clip, clip.length,loopRuns)) ; }
+        if (loopRuns > 0 && !forceStop)
+        { StartCoroutine(LoopAudio(clip, clip.length, loopRuns)); }
     }
     IEnumerator LoopAudio(AudioClip clip, float delay, float loopRuns)
     {
         yield return new WaitForSeconds(delay);
         if (audio.clip == clip)
-        { PlayAudio(clip, audio.volume,loopRuns-1); }
+        { PlayAudio(clip, audio.volume, loopRuns - 1); }
     }
     private void Movement()
     {
