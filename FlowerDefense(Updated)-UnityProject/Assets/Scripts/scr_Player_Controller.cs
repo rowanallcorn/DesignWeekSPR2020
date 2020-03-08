@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Rewired;
 
 public class scr_Player_Controller : MonoBehaviour
 {
     //components
-    private scr_PlayerInput_Component s_PlayerInput_Component;
     private Rigidbody2D rb;
     private Animator anim, targetIconAnim;
     private Collider2D myColl;
@@ -13,14 +13,15 @@ public class scr_Player_Controller : MonoBehaviour
     //Gameplay 
     [SerializeField] private float maxMovementSpeed, accTime, decTime;
     //Setup
-    [SerializeField] private int pLayerID;
-    [SerializeField] private string upKey, downKey, leftKey, rightKey, spawnTurretKey1, spawnTurretKey2, spawnTurretKey3, spawnBarrierKey1, spawnBarrierKey2, spawnBarrierKey3;
+    [SerializeField] [Range(1, 2)] private int pLayerID;
     [SerializeField] [Range(0, .8f)] private float joystickDeadZone;
     [SerializeField] private Vector2 gameSpaceMinBoundaries, gameSpaceMaxBoundaries;
     private GameObject barrierPrefab, turretPrefab;
     [SerializeField] private GameObject targetIcon;
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private Color grassPLacementUI, waterPlacementUI;
+    [SerializeField]
+    private Player playerInput;
     //logic 
     private Vector2 movementInput;
     private Vector2 movementSpeed;
@@ -38,7 +39,7 @@ public class scr_Player_Controller : MonoBehaviour
 
     void Start()
     {
-        s_PlayerInput_Component = GetComponent<scr_PlayerInput_Component>();
+        playerInput = ReInput.players.GetPlayer(pLayerID - 1);
         myColl = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         barrierPrefab = scr_Reference_Manager.barrierPrefab;
@@ -80,15 +81,9 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void HandlePlayerInput()
     {
-        movementInput = s_PlayerInput_Component.GetMovementInput(
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), leftKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), rightKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), downKey),
-            (KeyCode)System.Enum.Parse(typeof(KeyCode), upKey));
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey1)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey2)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnTurretKey3)))
-        { Action(turretPrefab); }
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey1)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey2)) || Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), spawnBarrierKey3)))
-        { Action(barrierPrefab); }
+        movementInput = new Vector2(playerInput.GetAxisRaw("MoveHorizontal"), playerInput.GetAxisRaw("MoveVertical"));
+        if (playerInput.GetButtonDown("PlantBarrier")) { Action(barrierPrefab); }
+        if (playerInput.GetButtonDown("PlantTurret")) { Action(turretPrefab); }
         if (movementInput.magnitude > joystickDeadZone && rb.velocity.magnitude < .2f)
         {
             startedWalking = true;
@@ -121,7 +116,7 @@ public class scr_Player_Controller : MonoBehaviour
         if (audio.clip == audioClips[0] && audio.isPlaying)
         { startedWalking = false; }
         if (audio.clip == audioClips[0] && !audio.isPlaying && rb.velocity.magnitude > .2f)
-        {   startedWalking = true;  }
+        { startedWalking = true; }
 
         if (startedWalking)
         {
@@ -147,7 +142,7 @@ public class scr_Player_Controller : MonoBehaviour
     }
     private void PlayAudio(AudioClip clip, float volume, float loopRuns)
     {
-       
+
         bool forceStop = false;
         if (audio.clip == audioClips[0] && rb.velocity.magnitude < .2f)
         { forceStop = true; }
@@ -215,7 +210,7 @@ public class scr_Player_Controller : MonoBehaviour
         anim.SetBool("Refilling", refill);//set to refilling  or not
         anim.SetBool("Hit", stunned);//set to refilling  or not
         //Set direction and movement animations
-        if (setAnim != facingDir&&!stopInput)
+        if (setAnim != facingDir && !stopInput)
         {
             switch (facingDir)
             {
@@ -283,7 +278,6 @@ public class scr_Player_Controller : MonoBehaviour
             }
         }
     }
- 
     public void Stunned()//called from bullet collision
     {
         stopInput = true;

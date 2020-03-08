@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3168390111583704200}
   - component: {fileID: 2349061467397098545}
-  - component: {fileID: 3168390111583704203}
   - component: {fileID: 5854535157766818667}
   - component: {fileID: 466072246525344758}
   - component: {fileID: 5819698567802815447}
@@ -47,26 +46,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3168390111583704196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5011ac975b8d0b040ba4d1e7b1811974, type: 3}
+  m_Script: {fileID: 11500000, guid: ac39bb6b5b537d7479a09c8bfd3935e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMovementSpeed: 2
+  maxMovementSpeed: 3
   accTime: 0.1
   decTime: 0.1
   pLayerID: 1
-  upKey: UpArrow
-  downKey: DownArrow
-  leftKey: LeftArrow
-  rightKey: RightArrow
-  spawnTurretKey1: LeftAlt
-  spawnTurretKey2: Z
-  spawnTurretKey3: ALpha5
-  spawnBarrierKey1: LeftControl
-  spawnBarrierKey2: LeftShift
-  spawnBarrierKey3: C
   joystickDeadZone: 0.4
-  gameSpaceMinBoundaries: {x: -4.95, y: -3.4}
-  gameSpaceMaxBoundaries: {x: -1.05, y: 3.9}
+  gameSpaceMinBoundaries: {x: -4.8, y: -3.4}
+  gameSpaceMaxBoundaries: {x: -1.2, y: 3.9}
   targetIcon: {fileID: 5496407589450110918}
   audioClips:
   - {fileID: 8300000, guid: 0def35ccefca8224cbad3e0a698d6132, type: 3}
@@ -74,10 +63,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ed201eb6198f6a4291f3b0263843667, type: 3}
   - {fileID: 8300000, guid: 5946a1b9431cb1640bd0e29fb977bf85, type: 3}
   - {fileID: 8300000, guid: d00e68dc9be6be44ea7e2e82a20b0bec, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  grassPLacementUI: {r: 1, g: 0.8625944, b: 0.4575472, a: 1}
+  grassPLacementUI: {r: 1, g: 0.79630667, b: 0.41037738, a: 1}
   waterPlacementUI: {r: 1, g: 1, b: 1, a: 1}
   sproutCheckOffsets:
   - {x: 1, y: 0}
@@ -85,18 +71,6 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
   waterDroplets: 3
---- !u!114 &3168390111583704203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168390111583704196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee7609e15517b4419ec707f9c622629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &5854535157766818667
 Rigidbody2D:
   serializedVersion: 4
