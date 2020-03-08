@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class scr_TransitionScenes : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class scr_TransitionScenes : MonoBehaviour
     private bool transitioned;
     private float birthTime;
     [SerializeField] private float minWaitInSeconds;
+    private Player systemInput;
 
     private void Start()
     {
+        systemInput = ReInput.players.GetSystemPlayer();
         anim = GetComponent<Animator>();
         birthTime = Time.time;
     }
@@ -21,10 +24,13 @@ public class scr_TransitionScenes : MonoBehaviour
     {
         if (onAnyKey)
         {
-            if (Input.anyKey && !transitioned&&Time.time>birthTime+ minWaitInSeconds)
+            if (systemInput.GetAnyButtonDown() )
             {
-                anim.SetTrigger("Transition");
-                transitioned = true;
+                if (Time.time > birthTime + minWaitInSeconds)
+                {
+                    anim.SetTrigger("Transition");
+                    transitioned = true;
+                }
             }
         }
     }
