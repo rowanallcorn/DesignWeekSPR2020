@@ -12,10 +12,13 @@ public class scr_TransitionScenes : MonoBehaviour
     private bool transitioned;
     private float birthTime;
     [SerializeField] private float minWaitInSeconds;
-    private Player systemInput;
+    private Player systemInput,p1Input,p2Input;
 
     private void Start()
     {
+        p1Input = ReInput.players.GetPlayer(0);
+        p2Input = ReInput.players.GetPlayer(1);
+
         systemInput = ReInput.players.GetSystemPlayer();
         anim = GetComponent<Animator>();
         birthTime = Time.time;
@@ -24,7 +27,7 @@ public class scr_TransitionScenes : MonoBehaviour
     {
         if (onAnyKey)
         {
-            if (systemInput.GetAnyButtonDown() )
+            if (systemInput.GetAnyButtonDown() || p1Input.GetAnyButtonDown() || p2Input.GetAnyButtonDown())
             {
                 if (Time.time > birthTime + minWaitInSeconds)
                 {
